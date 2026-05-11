@@ -220,3 +220,11 @@ The relevant training data is stored in the Zenedo. The following table conclude
 | SpliceAI | tensorflow | CNN | https://drive.google.com/file/d/1DrnOVmyLV2rFWWTa-lbZWzP3YzwO59K2/view | https://github.com/Illumina/SpliceAI | L | L+1000 | 3 | Acceptor/Donor/Neither | - | - | Cell | 2019 | Predicting Splicing from Primary Sequence with Deep Learning |
 | Borzoi | tensorflow | CNN, Transformers | https://github.com/calico/borzoi?tab=readme-ov-file | https://github.com/calico/borzoi?tab=readme-ov-file | 524288 | 16352 | 7611 | DNase-seq (674), ATAC-seq (232), ChIP-seq/Histone (3886), CAGE (1276), RNA (1543) | - | - | Nature Genetics | 2025 | Predicting RNA-seq coverage from DNA sequence as a unifying model of gene regulation |
 | SegmentNT | pytorch | CNN, BERT | https://huggingface.co/InstaDeepAI/segment_nt/tree/main | https://huggingface.co/InstaDeepAI/segment_nt | L | L | 14 | Genomic annotation probabilities (5'UTR, 3'UTR, lncRNA, CDS, etc.) | - | - | Nature Methods | 2025 | Annotating the genome at single-nucleotide resolution with DNA foundation models |
+
+# License
+
+This code is released under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. You are free to use, share, and adapt the code for non-commercial purposes. Any commercial use requires separate permission from the copyright holders.
+
+# Citations
+
+
