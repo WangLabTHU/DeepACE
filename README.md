@@ -8,5 +8,40 @@ The code for computational implementation of "Anchor-based ensemble learning for
 
 DeepACE (Deep Anchor-based Cis-regulatory Evaluation) is a deep learning–based framework that reinterprets 16 functional genomic models as complementary, semantically meaningful encodings of regulatory activity. DeepACE reveals a consistent geometric structure in which non-functional sequences collapse toward a compact regime, whereas functional sequences remain broadly distributed. Motivated by this asymmetry, DeepACE quantifies regulatory function as the distance from non-functional anchors, yielding a continuous, model-invariant metric without task-specific supervision. Consequently, DeepACE accurately captures the effects of sequence variation, distinguishes disease-associated variants, and eliminates non-functional synthetic candidates up to 16-fold more efficiently in sequence design tasks, while achieving leading performance across diverse benchmarking datasets and revealing interpretable functional directions within the regulatory landscape.
 
-![Figure 1](./Figs/F01_deepace_diagram/DeepACE_Fig1.tif)
-**Figure 1.** Overview of the DeepSwitch framework, including sequence generation, multi-layered prediction, iterative multi-objective optimization and massively parallel reporter assays.
+![Figure 1](./Figs/F01_deepace_diagram/DeepACE_Fig1.png)
+
+**Figure 1.** Figure 1: Overview of the DeepACE framework 
+
+(a)	Schematic of the DeepACE approach. Input consists of raw DNA sequences, which are first transformed into functional representations by multiple functional genomics models (I). These representations are then integrated via ensemble modeling and projected through Principal Component Analysis (PCA) into a unified representation space (i.e., URS) (II). Finally, distances to randomly sampled non-functional anchor sequences are computed to quantify regulatory function in a model-invariant manner (III). DeepACE ultimately assigns each input sequence a distance-based score reflecting its regulatory activity.
+
+(b)	Uniform Manifold Approximation and Projection (UMAP) of feature distributions for the same set of sequences across 16 predictive models (total n = 43,275), showing that each model encodes regulatory information in a distinct, model-specific manner. Colors correspond to different models as indicated in the legend.
+
+(c)	Heatmap of cross-model correlations for predicted changes in K562 CAGE signal at the center position following 5-kb tile perturbations. Correlations were computed across predictive models based on the predicted center-position activity changes induced by each perturbation. Labels denote the perturbed tile’s offset relative to the sequence center (negative/left, 0/center, positive/right). The heatmap highlights the degree of agreement among models in capturing position-dependent regulatory effects across long-range perturbations.
+
+(d)	Intra-class distances between functional and non-functional sequences (1:1 ratio) across 10 datasets. Top: DeepACE representation space, where distances are computed as Euclidean distances in URS. Bottom: original sequence space, where distances are computed using Levenshtein distance. Fold-change indicates how much larger the intra-class distance of functional sequences is relative to that of non-functional sequences.
+
+# Quick Start
+
+1. Predictions by functional geneomic models
+
+2. Unified representation
+
+3. Function measurement by anchor-based distances
+
+
+## Predictions by functional geneomic models
+
+We provide fully localized support for 16 functional genomic models published between 2016 and 2025. These models span highly heterogeneous software ecosystems, including incompatible conda environments, different PyTorch/TensorFlow versions, and diverse runtime dependencies. To make these models accessible within a unified framework, DeepACE introduces several layers of standardization and engineering integration:
+
+- **Unified model wrappers.** All models are encapsulated into a consistent class interface, with their dependencies organized under the `./libs` directory, enabling direct import and streamlined usage.
+
+- **Environment consolidation.** The original 16 heterogeneous runtime environments are reduced to only 5 unified environments (`./envs`). In particular, a single Lightning-based environment supports 11 different models.
+
+- **Standardized weight management.** In collaboration with original model authors, we cleaned and reorganized model checkpoints, dependencies, and auxiliary files, retaining only the essential parameters required for inference.
+
+- **Structured output annotation.** We systematically reorganized model outputs and functional channels, allowing users to rapidly identify the biological semantics associated with any output feature from any model.
+
+- **Built-in validation functions.** To ensure faithful reproduction, every model class includes a `quick_valid()` function. Each validation routine is linked to corresponding figures or statistical results from the original publication, allowing users to verify correct model loading and reproduction accuracy.
+
+Detailed information for all 16 models is provided in the **Preparation** section.
+
