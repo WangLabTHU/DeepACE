@@ -57,5 +57,43 @@ Due to GitHub repository size limitations, some reproduction assets used by the 
 
 - **Enformer.**  
   For Enformer reproduction, we discussed the validation procedure with the authors of `basenji2-pytorch` and identified a practical validation benchmark discussed at https://github.com/d-laub/basenji2-pytorch/issues/1.
-  
 
+## Unified Representation
+
+DeepACE integrates heterogeneous outputs from multiple functional genomic models into a shared representation space. A simplified pseudocode implementation is shown below:
+
+```python
+reps = concat(
+    reps_enformer,
+    reps_deepdnashape,
+    ...,
+    reps_puffin,
+    reps_segmenNT
+)
+
+pca = PCA(n_components=50, random_state=42)
+reps_pca = pca.fit_transform(reps)
+```
+
+## Function measurement by anchor-based distances
+
+DeepACE quantifies regulatory function using anchor-based distance measurements. In practice, Mahalanobis distance is typically used to measure the distance between real sequence representations and randomly generated anchor representations, as Euclidean distance is insensitive to covariance structure in high-dimensional representation spaces.
+
+A simplified pseudocode implementation is shown below:
+
+```
+cov = np.cov(pred_ref, rowvar=False)
+cov_inv = np.linalg.pinv(cov)
+
+sims = []
+
+for x in pred_alt:
+    dists = [-mahalanobis(x, y, cov_inv) for y in pred_ref]
+    dists = np.array(dists)
+    sims.append(dists.mean())
+
+sims = np.array(sims)
+sims = (sims - sims.min()) / (sims.max() - sims.min() + 1e-12)
+```
+
+Here, `pred_ref` denotes 50-dimensional embeddings of anchor-based non-functional sequences, while `pred_alt` denotes 50-dimensional embeddings of candidate regulatory sequences to be evaluated. The resulting normalized similarity score provides a continuous, model-invariant estimate of regulatory function.
