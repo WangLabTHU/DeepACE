@@ -166,38 +166,38 @@ The relevant training data is stored in the Zenedo. The following table conclude
 
 | Dataset Name | Experiment Method | Cell Type | Key Factor | Length | Design Method | Description | URL | Paper |
 |--------------|------------------|------------|------------|--------|---------------|-------------|-----|-------|
-| MPRA_HepG2 | MPRA | HepG2 | - | 200 | adalead | enhancers |  | Machine-guided design of cell-type-targeting cis-regulatory elements |
-| MPRA_K562 | MPRA | K562 | - | 200 | adalead | enhancers |  |  |
-| MPRA_SKNSH | MPRA | SKNSH | - | 200 | adalead | enhancers |  |  |
-| lentiMPRA_HepG2 | lentiMPRA | HepG2 | - | 200 | natural | enhancers |  | Massively parallel characterization of transcriptional regulatory elements |
-| lentiMPRA_K562 | lentiMPRA | K562 | - | 200 | natural | enhancers |  |  |
-| lentiMPRA_WTC11 | lentiMPRA | WTC11 | - | 200 | natural | enhancers |  |  |
-| Epigenetics_ELF1 | MPRA | HepG2 | ELF1 | 168 | deepseed | enhancers |  | Modeling and designing enhancers by introducing and harnessing transcription factor binding units |
-| Epigenetics_HNF1A | MPRA | HepG2 | HNF1A | 168 | deepseed | enhancers |  |  |
-| Epigenetics_HNF4A | MPRA | HepG2 | HNF4A | 168 | deepseed | enhancers |  |  |
-| Epigenetics_118TF | MPRA | HepG2 | - | 168 | deepseed | enhancers |  |  |
-| Epigenetics_train | MPRA | HepG2 | - | 168 | natural | enhancers |  |  |
-| Epigenetics_motif | MPRA | HepG2 | - | 168 | perturbation | enhancers |  |  |
+| MPRA_HepG2 | MPRA | HepG2 | - | 200 | adalead | enhancers | - | Machine-guided design of cell-type-targeting cis-regulatory elements |
+| MPRA_K562 | MPRA | K562 | - | 200 | adalead | enhancers | - | - |
+| MPRA_SKNSH | MPRA | SKNSH | - | 200 | adalead | enhancers | - | - |
+| lentiMPRA_HepG2 | lentiMPRA | HepG2 | - | 200 | natural | enhancers | - | Massively parallel characterization of transcriptional regulatory elements |
+| lentiMPRA_K562 | lentiMPRA | K562 | - | 200 | natural | enhancers | - | - |
+| lentiMPRA_WTC11 | lentiMPRA | WTC11 | - | 200 | natural | enhancers | - | - |
+| Epigenetics_ELF1 | MPRA | HepG2 | ELF1 | 168 | deepseed | enhancers | - | Modeling and designing enhancers by introducing and harnessing transcription factor binding units |
+| Epigenetics_HNF1A | MPRA | HepG2 | HNF1A | 168 | deepseed | enhancers | - | - |
+| Epigenetics_HNF4A | MPRA | HepG2 | HNF4A | 168 | deepseed | enhancers | - | - |
+| Epigenetics_118TF | MPRA | HepG2 | - | 168 | deepseed | enhancers | - | - |
+| Epigenetics_train | MPRA | HepG2 | - | 168 | natural | enhancers | - | - |
+| Epigenetics_motif | MPRA | HepG2 | - | 168 | perturbation | enhancers | - | - |
 | MPRABase_F9 | MPRA | HepG2 | F9 | 303 | mutagenesis | promoters | https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-019-11526-w/MediaObjects/41467_2019_11526_MOESM1_ESM.pdf | Saturation mutagenesis of twenty disease-associated regulatory elements at single base-pair resolution |
-| MPRABase_GP1BA | MPRA | HEL 92.1.7 | GP1BA | 385 | mutagenesis | promoters |  |  |
-| MPRABase_HBG1 | MPRA | HEL 92.1.7 | HBG1 | 274 | mutagenesis | promoters |  |  |
-| MPRABase_IRF4 | MPRA | SK-MEL-28 | IRF4 | 451 | mutagenesis | enhancers |  |  |
-| MPRABase_IRF6 | MPRA | HaCaT | IRF6 | 600 | mutagenesis | enhancers |  |  |
-| MPRABase_LDLR | MPRA | HepG2 | LDLR | 318 | mutagenesis | promoters |  |  |
-| MPRABase_PKLR | MPRA | K562 | PKLR | 470 | mutagenesis | promoters |  |  |
-| MPRABase_SORT1 | MPRA | HepG2 | SORT1 | 600 | mutagenesis | enhancers |  |  |
-| MPRABase_TERT | MPRA | SF7996 | TERT | 259 | mutagenesis | promoters |  |  |
-| MPRABase_ZFAND3 | MPRA | MIN6 | ZFAND3 | 579 | mutagenesis | enhancers |  |  |
+| MPRABase_GP1BA | MPRA | HEL 92.1.7 | GP1BA | 385 | mutagenesis | promoters | - | - |
+| MPRABase_HBG1 | MPRA | HEL 92.1.7 | HBG1 | 274 | mutagenesis | promoters | - | - |
+| MPRABase_IRF4 | MPRA | SK-MEL-28 | IRF4 | 451 | mutagenesis | enhancers | - | - |
+| MPRABase_IRF6 | MPRA | HaCaT | IRF6 | 600 | mutagenesis | enhancers | - | - |
+| MPRABase_LDLR | MPRA | HepG2 | LDLR | 318 | mutagenesis | promoters | - | - |
+| MPRABase_PKLR | MPRA | K562 | PKLR | 470 | mutagenesis | promoters | - | - |
+| MPRABase_SORT1 | MPRA | HepG2 | SORT1 | 600 | mutagenesis | enhancers | - | - |
+| MPRABase_TERT | MPRA | SF7996 | TERT | 259 | mutagenesis | promoters | - | - |
+| MPRABase_ZFAND3 | MPRA | MIN6 | ZFAND3 | 579 | mutagenesis | enhancers | - | - |
 | SCREEN | - | - | - | 600 | natural | CREs | https://screen.encodeproject.org/ | SCREEN: Search Candidate cis-Regulatory Elements by ENCODE |
 | DS-lentiMPRA-M | lentiMPRA | HepG2 | - | 170 | natural | enhancers | https://mprabase.ucsf.edu/app/mprabase | A systematic comparison reveals substantial differences in chromosomal versus episomal encoding of enhancer activity |
-| DS-lentiMPRA-WT | lentiMPRA | HepG2 | - | 170 | natural | enhancers |  |  |
-| DS-STARR-seq | STARR-seq | HepG2 | - | 186 | natural | enhancers |  | Functional characterization of enhancer evolution in the primate lineage |
+| DS-lentiMPRA-WT | lentiMPRA | HepG2 | - | 170 | natural | enhancers | - | - |
+| DS-STARR-seq | STARR-seq | HepG2 | - | 186 | natural | enhancers | - | Functional characterization of enhancer evolution in the primate lineage |
 | CRÈME_K562 | - | K562 | - | 196608 | natural | enhancers | https://github.com/p-koo/creme-nn | Interpreting cis-regulatory interactions from large-scale deep neural networks |
-| CRÈME_GM12878 | - | GM12878 | - | 196608 | natural | enhancers |  |  |
-| CRÈME_PC-3 | - | PC-3 | - | 196608 | natural | enhancers |  |  |
-| promoterAI_clinvar | - | - | - | 2001 | natural | enhancers |  | Predicting expression-altering promoter mutations with deep learning |
-| promoterAI_cagi5 | - | - | - | 2001 | natural | enhancers |  |  |
-| promoterAI_mprasat | - | - | - | 2001 | natural | enhancers |  |  |
-| promoterAI_gelrna | - | - | - | 2001 | natural | enhancers |  |  |
+| CRÈME_GM12878 | - | GM12878 | - | 196608 | natural | enhancers | - | - |
+| CRÈME_PC-3 | - | PC-3 | - | 196608 | natural | enhancers | - | - |
+| promoterAI_clinvar | - | - | - | 2001 | natural | enhancers | - | Predicting expression-altering promoter mutations with deep learning |
+| promoterAI_cagi5 | - | - | - | 2001 | natural | enhancers | - | - |
+| promoterAI_mprasat | - | - | - | 2001 | natural | enhancers | - | - |
+| promoterAI_gelrna | - | - | - | 2001 | natural | enhancers | - | - |
 
 
