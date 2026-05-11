@@ -1,0 +1,14 @@
+protein_coding_gene
+lncRNA
+5UTR
+3UTR
+exon
+intron
+splice_donor
+splice_acceptor
+promoter_Tissue_specific
+promoter_Tissue_invariant
+enhancer_Tissue_specific
+enhancer_Tissue_invariant
+CTCF-bound
+polyA_signal
