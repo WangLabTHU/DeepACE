@@ -47,6 +47,32 @@ We provide fully localized support for 16 functional genomic models published be
 
 Detailed information for all 16 models is provided in the **Preparation** section.
 
+\subsection*{One-click Reproduction Pipeline}
+
+We first provide a one-click reproduction script \texttt{./prediction.sh}, which can be used as follows:
+
+\begin{verbatim}
+# run_unified_prediction.sh
+#
+# This script generates and runs model-specific Python prediction scripts
+# for a set of genomics models, then merges their outputs into unified files.
+#
+# Usage:
+#   bash run_unified_prediction.sh \
+#     -i SEQS_PATH      Path to input FASTA/sequences file                \
+#     -o OUTS_PATH      Path to output directory                           \
+#     -t TRACKS_PATH    Path to tracks/features CSV file                  \
+#     [-l LOC]          Location/mode tag for model outputs (default: center) \
+#     [-d DEV]          CUDA device index (default: 0)                    \
+#     [-m MODEL_INDEXES]Comma-separated list of model indices (e.g. 0,3,5; default: all) \
+#     [-n|--nohup]      Relaunch entire pipeline under nohup to OUTS_PATH/nohup.out \
+#     [-c|--clear]      After completion, clear all files in OUTS_PATH except uni_pred.npy, uni_anno.csv, reports.txt, script_unified.py \
+\end{verbatim}
+
+By using this script, users only need to provide raw input sequences, and the system will automatically generate prediction results across all functional genomic models and aggregate them into unified outputs.
+
+\subsection*{Model Reproducibility}
+
 Due to GitHub repository size limitations, some reproduction assets used by the `quick_valid()` functions are provided as external references. Two simple instances for verifying model behavior using the following resources:
 
 - **SegmentNT.**  
