@@ -230,48 +230,26 @@ This code is released under the Creative Commons Attribution-NonCommercial 4.0 I
 
 ```
 [1] Gosai, S. J., Castro, R. I., Fuentes, N., Butts, J. C., Mouri, K., Alasoadura, M., ... & Tewhey, R. (2024). Machine-guided design of cell-type-targeting cis-regulatory elements. Nature, 634(8036), 1211-1220.  
-
 [2] Agarwal, V., Inoue, F., Schubach, M., Penzar, D., Martin, B. K., Dash, P. M., ... & Ahituv, N. (2025). Massively parallel characterization of transcriptional regulatory elements. Nature, 639(8054), 411-420. 
-
 [3] Li, J., Zhang, P., Xi, X., Liu, L., Wei, L., & Wang, X. (2025). Modeling and designing enhancers by introducing and harnessing transcription factor binding units. Nature Communications, 16(1), 1469.  
-
 [4] Kircher, M., Xiong, C., Martin, B., Schubach, M., Inoue, F., Bell, R. J., ... & Ahituv, N. (2019). Saturation mutagenesis of twenty disease-associated regulatory elements at single base-pair resolution. Nature communications, 10(1), 3583.  
-
 [5] Moore, J. E., Purcaro, M. J., Pratt, H. E., Epstein, C. B., Shoresh, N., Adrian, J., ... & Weng, Z. (2020). Expanded encyclopaedias of DNA elements in the human and mouse genomes. Nature, 583(7818), 699-710.  
-
 [6] Inoue, F., Kircher, M., Martin, B., Cooper, G. M., Witten, D. M., McManus, M. T., ... & Shendure, J. (2017). A systematic comparison reveals substantial differences in chromosomal versus episomal encoding of enhancer activity. Genome research, 27(1), 38. 
-
 [7] Klein, J. C., Keith, A., Agarwal, V., Durham, T., & Shendure, J. (2018). Functional characterization of enhancer evolution in the primate lineage. Genome Biology, 19(1), 99.  
-
 [8] Toneyan, S., & Koo, P. K. (2024). Interpreting cis-regulatory interactions from large-scale deep neural networks. Nature genetics, 56(11), 2517-2527.  
-
 [9] Jaganathan, K., Ersaro, N., Novakovsky, G., Wang, Y., James, T., Schwartzentruber, J., ... & Farh, K. K. H. (2025). Predicting expression-altering promoter mutations with deep learning. Science, 389(6760), eads7373.  
-
 [10] Kelley, D. R., Snoek, J., & Rinn, J. L. (2016). Basset: learning the regulatory code of the accessible genome with deep convolutional neural networks. Genome research, 26(7), 990.  
-
 [11] Quang, D., & Xie, X. (2016). DanQ: a hybrid convolutional and recurrent deep neural network for quantifying the function of DNA sequences. Nucleic acids research, 44(11), e107-e107.
-
 [12] Sahu, B., Hartonen, T., Pihlajamaa, P., Wei, B., Dave, K., Zhu, F., ... & Taipale, J. (2022). Sequence determinants of human gene regulatory elements. Nature genetics, 54(3), 283-294. 
-
 [13] Linder, J., Koplik, S. E., Kundaje, A., & Seelig, G. (2022). Deciphering the impact of genetic variation on human polyadenylation using APARENT2. Genome biology, 23(1), 232. 
-
 [14] Li, J., Chiu, T. P., & Rohs, R. (2024). Predicting DNA structure using a deep learning method. Nature communications, 15(1), 1243.
-
 [15] He, A. Y., & Danko, C. G. (2024). Dissection of core promoter syntax through single nucleotide resolution modeling of transcription initiation. BioRxiv.  
-
 [16] Dudnyk, K., Cai, D., Shi, C., Xu, J., & Zhou, J. (2024). Sequence basis of transcription initiation in the human genome. Science, 384(6694), eadj0116. 
-
 [17] Avsec, Ž., Agarwal, V., Visentin, D., Ledsam, J. R., Grabska-Barwinska, A., Taylor, K. R., ... & Kelley, D. R. (2021). Effective gene expression prediction from sequence by integrating long-range interactions. Nature methods, 18(10), 1196-1203.  
-
 [18] Kelley, D. R., Reshef, Y. A., Bileschi, M., Belanger, D., McLean, C. Y., & Snoek, J. (2018). Sequential regulatory activity prediction across chromosomes with convolutional neural networks. Genome research, 28(5), 739.  
-
 [19] Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2018). Deep learning sequence-based ab initio prediction of variant effects on expression and disease risk. Nature genetics, 50(8), 1171-1179.  
-
 [20] Chen, K. M., Wong, A. K., Troyanskaya, O. G., & Zhou, J. (2022). A sequence-based global map of regulatory activity for deciphering human genetics. Nature genetics, 54(7), 940-949.
-
 [21] Jaganathan, K., Panagiotopoulou, S. K., McRae, J. F., Darbandi, S. F., Knowles, D., Li, Y. I., ... & Farh, K. K. H. (2019). Predicting splicing from primary sequence with deep learning. Cell, 176(3), 535-548.
-
 [22] Linder, J., Srivastava, D., Yuan, H., Agarwal, V., & Kelley, D. R. (2025). Predicting RNA-seq coverage from DNA sequence as a unifying model of gene regulation. Nature Genetics, 57(4), 949-961. 
-
 [23] De Almeida, B. P., Dalla-Torre, H., Richard, G., Blum, C., Hexemer, L., Gélard, M., ... & Pierrot, T. (2025). Annotating the genome at single-nucleotide resolution with DNA foundation models. Nature Methods, 1-15.
 ```
