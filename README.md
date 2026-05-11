@@ -136,26 +136,24 @@ This codebase requires a GPU-enabled environment to efficiently support deep lea
 
 We provide two primary environments to support the full functionality of the package:
 
-** Lightning Environment **
+**Lightning Environment**
 
----
-This environment supports the majority of models in the framework.
+```
+This environment supports the majority of models in the framework, like Basset and Borzoi
 - CUDA: 12.2  
 - Python: 3.9.6  
 - PyTorch: 1.9.0  
 Higher versions of Python and PyTorch are generally compatible and may also work without issues.
----
+```
 
-** Transformers Environment **
+**Transformers Environment**
 
----
-This environment is used for transformer-based models.
+```
+This environment is used for transformer-based models, like Enformer and SegmentNT
 - CUDA: 12.2  
 - Python: 3.9.12  
 - PyTorch: 2.4.0+cu121  
 Higher versions of Python and PyTorch are also expected to be compatible.
----
+```
 
-The remaining three auxiliary environments are lightweight and largely dependent on the above two core environments. If the Lightning and Transformers environments are properly configured, most downstream dependencies (Python/PyTorch compatibility layers) will be automatically supported.
-
-The full functionality of this package relies on additional Python dependencies located in the `./envs` directory.
+The remaining three auxiliary environments are lightweight and relatively easy to configure. The full functionality of this package relies on additional Python dependencies located in the `./envs` directory.
