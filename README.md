@@ -227,4 +227,6 @@ This code is released under the Creative Commons Attribution-NonCommercial 4.0 I
 
 # Citations
 
-
+```
+[1] Qixiu Du, Han Yu, & WangLabTHU. (2026). WangLabTHU/DeepACE: (Toolkits) Anchor-based ensemble learning for assessing regulatory function of DNA sequences (v0.0.0). Zenodo. https://doi.org/10.5281/zenodo.20116129
+```
