@@ -50,10 +50,13 @@ Detailed information for all 16 models is provided in the **Preparation** sectio
 Due to GitHub repository size limitations, some reproduction assets used by the `quick_valid()` functions are provided as external references. Two simple instances for verifying model behavior using the following resources:
 
 - **SegmentNT.**  
-  The original inference and visualization notebook is available at https://colab.research.google.com/#fileId=https%3A//huggingface.co/InstaDeepAI/segment_nt/blob/main/inference_segment_nt.ipynb. Our reproduced result can be found at valids dataset:
+The original inference and visualization notebook is available at
   
-![Extra 1](./valids/SegmentNT/predicted_features.png)
- 
+`https://colab.research.google.com/#fileId=https%3A//huggingface.co/InstaDeepAI/segment_nt/blob/main/inference_segment_nt.ipynb`
+  
+Our reproduced result can be found at valids dataset:
+
+`./valids/SegmentNT/predicted_features.png`
 
 - **Enformer.**  
   For Enformer reproduction, we discussed the validation procedure with the authors of `basenji2-pytorch` and identified a practical validation benchmark discussed at https://github.com/d-laub/basenji2-pytorch/issues/1.
