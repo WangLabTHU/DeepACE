@@ -1,4 +1,4 @@
-<img width="1815" height="409" alt="image" src="https://github.com/user-attachments/assets/653a90f9-084d-4142-826f-e4dd99d279a1" /># DeepACE
+# DeepACE
 
 *qxdu edited on May 11, 2026*
 
