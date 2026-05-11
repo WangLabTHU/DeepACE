@@ -10,7 +10,7 @@ DeepACE (Deep Anchor-based Cis-regulatory Evaluation) is a deep learning–based
 
 ![Figure 1](./Figs/F01_deepace_diagram/DeepACE_Fig1a.png)
 
-**Figure 1.** Figure 1: Overview of the DeepACE framework 
+**Figure 1.**  Overview of the DeepACE framework 
 
 Schematic of the DeepACE approach. Input consists of raw DNA sequences, which are first transformed into functional representations by multiple functional genomics models (I). These representations are then integrated via ensemble modeling and projected through Principal Component Analysis (PCA) into a unified representation space (i.e., URS) (II). Finally, distances to randomly sampled non-functional anchor sequences are computed to quantify regulatory function in a model-invariant manner (III). DeepACE ultimately assigns each input sequence a distance-based score reflecting its regulatory activity.
 
