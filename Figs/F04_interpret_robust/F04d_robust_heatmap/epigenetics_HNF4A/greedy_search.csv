@@ -1,0 +1,4 @@
+,scenario name,selected models,fold_change_history
+0,epigenetics_HNF4A,Enformer → Borzoi → DeepDNAshape,1.023851
+1,epigenetics_HNF4A,Enformer → Borzoi → DeepDNAshape,1.04556396394133
+2,epigenetics_HNF4A,Enformer → Borzoi → DeepDNAshape,1.053586157278402

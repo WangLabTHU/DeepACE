@@ -1,0 +1,41 @@
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GATA2"]} --top_rows 10 --top_cols 30
+Traceback (most recent call last):
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 10, in <module>
+    from functions import *
+ModuleNotFoundError: No module named 'functions'
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GATA2"]} --top_rows 10 --top_cols 30
+Traceback (most recent call last):
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 99, in <module>
+    plot_differ_heatmap(plot_path=args.outs_path + "/heatmap", pos_pred=filt_pos_pred, neg_pred=filt_neg_pred, anno=filt_anno, top_cols=args.top_cols, top_rows=args.top_rows)
+NameError: name 'plot_differ_heatmap' is not defined
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GATA2"]} --top_rows 10 --top_cols 30
+Traceback (most recent call last):
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 300, in <module>
+    plot_differ_heatmap(plot_path=args.outs_path + "/heatmap", pos_pred=filt_pos_pred, neg_pred=filt_neg_pred, anno=filt_anno, top_cols=args.top_cols, top_rows=args.top_rows)
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 154, in plot_differ_heatmap
+    stat, p = wilcoxon(pos_normalized[:, j], neg_normalized[:, j])
+NameError: name 'wilcoxon' is not defined
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GATA2"]} --top_rows 10 --top_cols 30
+Traceback (most recent call last):
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 301, in <module>
+    plot_differ_heatmap(plot_path=args.outs_path + "/heatmap", pos_pred=filt_pos_pred, neg_pred=filt_neg_pred, anno=filt_anno, top_cols=args.top_cols, top_rows=args.top_rows)
+  File "/home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py", line 259, in plot_differ_heatmap
+    generate_pdf(max_data, max_anno, max_path, "Diff Max", row_labels=max_labels)
+NameError: name 'generate_pdf' is not defined
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GATA2/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GATA2"]} --top_rows 10 --top_cols 30
+PDF report saved to /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/heatmap_differ_max.pdf with 2 pages
+PDF report saved to /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/heatmap_differ_min.pdf with 2 pages
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_BHLHE40/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_BHLHE40/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_BHLHE40/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["BHLHE40"]} --top_rows 10 --top_cols 30
+PDF report saved to /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/heatmap_differ_max.pdf with 2 pages
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GABPA/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GABPA/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_GABPA/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["GABPA"]} --top_rows 10 --top_cols 30
+PDF report saved to /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/heatmap_differ_max.pdf with 2 pages
+[INFO] Running mutation analysis in env Digital_Platform_lightning
+[CMD] python /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/script_mutation_analysis.py --pos_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_SP1/alt_preds/uni_pred.npy --neg_pred /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_SP1/ref_preds/uni_pred.npy --outs_path /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs --csv_path /home/hyu/Digital_Platform/manuals/fig_dataset/perturb_batch_deeptfbu/pos_SP1/alt_preds/uni_anno.csv --match_mode hard --keywords {"celltype": ["HepG2", "K562"], "motif": ["SP1"]} --top_rows 10 --top_cols 30
+PDF report saved to /home/hyu/DeepACE/Supps/S03_perturb_barplot_tfbs/heatmap_differ_max.pdf with 2 pages

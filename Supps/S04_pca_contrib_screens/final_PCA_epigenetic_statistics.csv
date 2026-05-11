@@ -1,0 +1,11 @@
+﻿PC,CAGE/PRO-cap - Count,CAGE/PRO-cap - Ratio,Transcription factor - Count,Transcription factor - Ratio,Histone activation - Count,Histone activation - Ratio,Histone repression - Count,Histone repression - Ratio,RNA polymerase - Count,RNA polymerase - Ratio,Chromatin accessibility - Count,Chromatin accessibility - Ratio
+PC1,0,0.0,100,1.0,0,0.0,0,0.0,0,0.0,0,0.0
+PC2,2,0.02,3,0.03,55,0.55,37,0.37,3,0.03,0,0.0
+PC3,0,0.0,1,0.01,74,0.74,25,0.25,0,0.0,0,0.0
+PC4,7,0.0769,11,0.1209,32,0.3516,33,0.3626,2,0.022,6,0.0659
+PC5,95,0.95,0,0.0,4,0.04,1,0.01,0,0.0,0,0.0
+PC6,9,0.1636,29,0.5273,7,0.1273,7,0.1273,2,0.0364,1,0.0182
+PC7,54,0.6835,14,0.1772,8,0.1013,2,0.0253,0,0.0,1,0.0127
+PC8,9,0.1184,20,0.2632,30,0.3947,8,0.1053,0,0.0,9,0.1184
+PC9,0,0.0,83,0.8469,9,0.0918,6,0.0612,0,0.0,0,0.0
+PC10,24,0.2667,21,0.2333,14,0.1556,25,0.2778,3,0.0333,3,0.0333

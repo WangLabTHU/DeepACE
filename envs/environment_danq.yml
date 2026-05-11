@@ -1,0 +1,35 @@
+name: Digital_Platform_danq
+channels:
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1
+  - ca-certificates=2024.11.26
+  - certifi=2020.6.20
+  - libedit=3.1.20210910
+  - libgcc-ng=9.1.0
+  - ncurses=6.3
+  - openssl=1.0.2u
+  - pip=19.3.1
+  - python=2.7.10
+  - readline=6.2
+  - setuptools=44.0.0
+  - sqlite=3.33.0
+  - tk=8.5.18
+  - wheel=0.37.1
+  - zlib=1.2.12
+  - pip:
+    - -e ../libs/danq/DanQ_seya
+    - conda-pack==0.6.0
+    - h5py==2.10.0
+    - keras==0.2.0
+    - numpy==1.16.6
+    - pandas==0.24.2
+    - python-dateutil==2.9.0.post0
+    - pytz==2025.1
+    - pyyaml==5.4.1
+    - scikit-learn==0.20.4
+    - scipy==1.2.3
+    - six==1.17.0
+    - theano==0.8.0
+prefix: /home/hyu/anaconda3/envs/Digital_Platform_danq
+
