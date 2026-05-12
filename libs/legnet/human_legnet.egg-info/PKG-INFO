@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: human-legnet
+Version: 0.1.0
+Summary: Massively parallel characterization of transcriptional regulatory elements in three diverse human cell types
+Home-page: https://github.com/visze/sequence_cnn_models/tree/7638fce137db0445123efe8d7e2c35e248fafc5f
+Author: Vikram Agarwal
+Author-email: shendure@uw.edu
+License: GNU
+Description: UNKNOWN
+Platform: UNKNOWN

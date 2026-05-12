@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: enformer-pytorch
+Version: 0.8.10
+Summary: Enformer - Pytorch
+Home-page: https://github.com/lucidrains/enformer-pytorch
+Author: Phil Wang
+Author-email: lucidrains@gmail.com
+License: MIT
+Keywords: artificial intelligence,transformer,gene-expression
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: discrete-key-value-bottleneck-pytorch>=0.0.8
+Requires-Dist: einops>=0.3
+Requires-Dist: numpy
+Requires-Dist: polars
+Requires-Dist: pyfaidx
+Requires-Dist: pyyaml

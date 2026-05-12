@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: deepDNAshape
+Version: 0.1.0
+Summary: Deep DNAshape
+Home-page: 
+Author: Jinsen Li  
+Author-email: jinsenli@usc.edu
+License: BSD 2-clause
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+License-File: LICENSE

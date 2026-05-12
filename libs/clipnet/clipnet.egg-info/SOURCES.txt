@@ -1,0 +1,13 @@
+setup.py
+clipnet.egg-info/PKG-INFO
+clipnet.egg-info/SOURCES.txt
+clipnet.egg-info/dependency_links.txt
+clipnet.egg-info/not-zip-safe
+clipnet.egg-info/top_level.txt
+clipnet_mini/cgen.py
+clipnet_mini/clipnet.py
+clipnet_mini/custom_loss.py
+clipnet_mini/predict_ensemble.py
+clipnet_mini/predict_individual_model.py
+clipnet_mini/rnn_v10.py
+clipnet_mini/utils.py

@@ -1,0 +1,7 @@
+setup.py
+boda/__init__.py
+boda.egg-info/PKG-INFO
+boda.egg-info/SOURCES.txt
+boda.egg-info/dependency_links.txt
+boda.egg-info/not-zip-safe
+boda.egg-info/top_level.txt

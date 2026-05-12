@@ -1,0 +1,6 @@
+discrete-key-value-bottleneck-pytorch>=0.0.8
+einops>=0.3
+numpy
+polars
+pyfaidx
+pyyaml
