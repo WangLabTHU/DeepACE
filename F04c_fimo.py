@@ -46,6 +46,18 @@ def regroup(count):
     else:
         return str(count)
 
+def classify_feature(f):
+    if f.startswith("CHIP-seq:H3K"):
+        return "Histone"
+    elif f.startswith("CHIP-seq:"):
+        return "Motif"
+    elif "CAGE" in f:
+        return "RNA"
+    elif "ATAC-seq" in f:
+        return "Accessibility"
+    else:
+        return "Other"
+    
 df_focus = pd.read_csv(f"./total_features.csv")
 df_focus["original_index"] = df_focus.index.tolist()
 df_focus["feature_clean"] = df_focus["feature"].replace({"CHIP:": "CHIP-seq:","CEBPb": "CEBPB","CHIP-seq:3xFLAG-": "CHIP-seq:"}, regex=True)
@@ -53,7 +65,7 @@ df_focus["feature_group"] = df_focus["feature_clean"].apply(classify_feature)
 df_focus["feature_channel"] = df_focus.apply(lambda row: f"({row['model']})-({row.name})-{row['feature_clean']}", axis=1)
 df_focus = df_focus.drop(columns=["Unnamed: 0"])
 
-labels_df = pd.read_excel("/Datas/D04_deeptfbu/3TF_MPRA.xlsx")
+labels_df = pd.read_excel("./Datas/D04_deeptfbu/3TF_MPRA.xlsx")
 labels_df = labels_df[labels_df['sequence_name'].str.contains("HNF4A_1_aim", na=False)]
 primary_data = np.load(f"./Preds/D04_deeptfbu/valids_Epigenetics_HNF4A_1_aim/uni_pred.npy")
 labels_df["preds"] = [float(item.split("_")[0]) for item in labels_df["sequence_name"]]
@@ -84,8 +96,8 @@ for tag in ["preds", "measured enhancer activity"]:
     freq_order = [x for x in base_order if x in hnf4a_df["HNF4A_group"].unique()]
     plt.figure(figsize=(6, 6))
     sns.boxplot(x="HNF4A_group", y=tag, data=hnf4a_df, order=freq_order, 
-                color="#74a892", flierprops=dict(marker='.', color='black', markersize=5))
+                color="#74a892", showfliers=False) # flierprops=dict(marker='.', color='black', markersize=5)
     plt.xlabel("HNF4A motif frequency")
     plt.ylabel(tag)
     plt.title("HNF4A motif frequency vs. Expression")
-    plt.savefig(f"./Figs/F04_interpret_robust/F04c_measured enhancer activity.pdf")
+    plt.savefig(f"./Figs/F04_interpret_robust/F04c_{tag}.pdf")
