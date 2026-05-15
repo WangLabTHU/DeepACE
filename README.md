@@ -218,7 +218,7 @@ The remaining three auxiliary environments are lightweight and relatively easy t
 
 # Resources
 
-Zenodo repository for codes: https://zenodo.org/records/20116129
+Zenodo repository for codes: https://zenodo.org/records/20133013
 
 ```
 Qixiu Du, Han Yu, & WangLabTHU. (2026). WangLabTHU/DeepACE: (Toolkits) Anchor-based ensemble learning for assessing regulatory function of DNA sequences (v0.0.0). Zenodo. https://doi.org/10.5281/zenodo.20116129
