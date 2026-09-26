@@ -216,6 +216,79 @@ The remaining three auxiliary environments are lightweight and relatively easy t
 
 ---
 
+# Implementations
+
+This section explains how to integrate a new functional genomic model into DeepACE. It covers six points: (i) how to organize and integrate new model code by following the structure of the provided DeepACE class template; (ii) how to reuse the five pre-configured environments we released, sparing users the effort of setting up their own; (iii) how to place user-provided model libraries and weights in the designated directories; (iv) how to extract the model's outputs and align them to the DeepACE representation; (v) how to place the output track files in the designated folders; and (vi) how to update `prediction.sh` to run the new model in a single command.
+
+## Integrating a New Model
+
+We use Enformer as the worked example; its class is [`./models/enformer.py`](https://github.com/WangLabTHU/DeepACE/blob/main/models/enformer.py). Integrating a model amounts to answering five practical questions:
+
+- **Which dependencies does it need?** We first inspected Enformer's dependencies and found that it relies on the `enformer-pytorch` library. Libraries of this kind are pre-placed in the repository, e.g. under [`./libs/enformer`](https://github.com/WangLabTHU/DeepACE/tree/main/libs/enformer).
+
+- **Which environment can run it?** Enformer additionally requires the `transformers` Python package, which our `Digital_Platform_transformers` environment already satisfies, so one of the five released environments can be reused as is.
+
+- **Where do the weights go?** The authors provide the weights; we place them in the corresponding `checks` subdirectory, e.g. [`./checks/enformer`](https://github.com/WangLabTHU/DeepACE/tree/main/checks/enformer).
+
+- **What does each output channel mean?** This is essential and easily overlooked. The biological meaning of every output channel was assembled from the authors' releases, the original paper and other sources, and is stored next to the model library, e.g. [`./libs/enformer/targets_human.txt`](https://github.com/WangLabTHU/DeepACE/blob/main/libs/enformer/targets_human.txt).
+
+- **Which nucleotide encoding order does it expect?** Equally easy to overlook: `ACGT` is the prevailing order, but a model may differ.
+
+## Requirements for a New Model Class
+
+A new model is provided as a class in the same form as the skeleton below; the full implementation is the linked `./models/enformer.py`.
+
+```python
+class Enformer():
+    def __init__(self, model_path="./checks/Enformer"):
+        self.input_len = 196608             # replace with your own model's input limit
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.pretrained_model = Enformer_.from_pretrained(model_path).eval().to(self.device)
+
+    def encode(self, seqs):
+        # one-hot in the model's own nucleotide order, then pad or crop to input_len
+        seq_len = len(seqs[0])
+        seqs_encode = ReorderedOneHot("ACGT")(seqs)
+        seqs_encode = padding_and_cropping(seqs_encode, seq_len, self.input_len, "Enformer")
+        return seqs_encode
+
+    def predict_bash(self, seqs, csv_features, mode="center"):
+        pred_list = self.predict(self.encode(seqs))       # (n_seq, n_token, n_track)
+        if mode == "center":                              # the token at the original position
+            mid = (pred_list.shape[1] - 1) // 2
+            pred_list = pred_list[:, mid:mid + 1, :].mean(dim=1)
+        anno_df = pd.read_csv(csv_features)               # track -> biological meaning
+        anno_df = anno_df[anno_df["model"] == "Enformer"].drop("Unnamed: 0", axis=1).reset_index()
+        return pred_list, anno_df
+
+    def quick_valid(self):
+        # reproduce one result / one figure of the original publication
+        seqs = open_fa("./valids/Enformer/test-sample.txt")
+        test_target = torch.load("./valids/Enformer/test-sample.pt")["target"]
+        test_pred, _ = self.predict(seqs)
+        print("Correlation between Enformer and target:",
+              pearson_corr_coef(test_pred[0].cpu(), test_target).item())
+```
+
+The class must satisfy the following:
+
+- **Weights are loaded at initialization.** The model is instantiated and moved to the device in `__init__`.
+
+- **An `encode` function is mandatory.** It may reuse the `kipoiseq` and `padding_and_cropping` utilities we provide. Replace `196608` in the skeleton with the input limit of your own model.
+
+- **A `quick_valid` function is mandatory.** It must reproduce at least one result or one figure reported in the original publication, so that faithful loading can be verified. The validation assets are placed by default in the corresponding `valids` subdirectory, named after the model, e.g. [`./valids/Enformer`](https://github.com/WangLabTHU/DeepACE/tree/main/valids/Enformer).
+
+- **A `predict_bash` function is mandatory.** It takes sequences as input and returns `pred_list, anno_df`, the format used to organize the outputs.
+
+## Registering the Model in prediction.sh
+
+Once a new model is implemented, modify `MODEL_LIST`, `ENV_LIST` and `MODEL_DESCRIPTIONS` in `./prediction.sh`; this assigns your model a new index and makes it callable in the one-click pipeline.
+
+## Aggregating the Outputs
+
+For a model such as Sei, which maps one sequence to many features with a single value each, the outputs are kept as they are. For a model such as Enformer or AlphaGenome, which maps one sequence to many features with multiple tokens (receptive fields) each, we take the central token by default, corresponding to the original position before padding. Setting the aggregation to `average` is also possible.
+
+
 # Resources
 
 Zenodo repository for codes: https://zenodo.org/records/20133013
