@@ -44,7 +44,7 @@ Detailed information for all 16 models is provided in the **Preparation** sectio
 
 ### One-click Reproduction Pipeline
 
-We first provide a one-click reproduction script \texttt{./prediction.sh}, which can be used as follows:
+We first provide a one-click reproduction script `./prediction.sh`, which can be used as follows:
 
 ```
 # run_unified_prediction.sh
