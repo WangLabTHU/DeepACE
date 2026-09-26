@@ -1,6 +1,6 @@
 # DeepACE
 
-*qxdu edited on May 11, 2026*
+*qxdu edited on Sept 26, 2026*
 
 The code for computational implementation of "Anchor-based ensemble learning for assessing regulatory function of DNA sequences".
 
