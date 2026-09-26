@@ -1,0 +1,9 @@
+dataset,motif,cell_line,head,track_index,track_name,biosample_name,biosample_type,assay_title,nonzero_mean,npy_file
+MPRABase_LDLR,LDLR,HepG2,dnase,109,EFO:0001187 DNase-seq,HepG2,cell_line,DNase-seq,0.59175456,dnase_1bp_center_mean.npy
+MPRABase_LDLR,LDLR,HepG2,atac,56,EFO:0001187 ATAC-seq,HepG2,cell_line,ATAC-seq,0.34572423,atac_1bp_center_mean.npy
+MPRABase_F9,F9,HepG2,dnase,109,EFO:0001187 DNase-seq,HepG2,cell_line,DNase-seq,0.59175456,dnase_1bp_center_mean.npy
+MPRABase_F9,F9,HepG2,atac,56,EFO:0001187 ATAC-seq,HepG2,cell_line,ATAC-seq,0.34572423,atac_1bp_center_mean.npy
+MPRABase_PKLR,PKLR,K562,dnase,118,EFO:0002067 DNase-seq,K562,cell_line,DNase-seq,0.75121444,dnase_1bp_center_mean.npy
+MPRABase_PKLR,PKLR,K562,atac,60,EFO:0002067 ATAC-seq,K562,cell_line,ATAC-seq,0.3458327,atac_1bp_center_mean.npy
+MPRABase_SORT1,SORT1,HepG2,dnase,109,EFO:0001187 DNase-seq,HepG2,cell_line,DNase-seq,0.59175456,dnase_1bp_center_mean.npy
+MPRABase_SORT1,SORT1,HepG2,atac,56,EFO:0001187 ATAC-seq,HepG2,cell_line,ATAC-seq,0.34572423,atac_1bp_center_mean.npy

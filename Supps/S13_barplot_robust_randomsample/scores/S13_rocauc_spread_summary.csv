@@ -1,0 +1,10 @@
+Algorithm,mean_spread_across_datasets
+DeepACE-cold,0.03480375984290579
+DeepACE-random,0.02165562604518559
+Evo2,0.0
+gpnmsa,0.0
+phastCons100way,0.0
+phastCons470way,0.0
+phyloP100way,0.0
+phyloP470way,0.0
+promoterAI,0.0

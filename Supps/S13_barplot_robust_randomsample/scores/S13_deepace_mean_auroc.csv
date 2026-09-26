@@ -1,0 +1,9 @@
+Motif,Algorithm,Mean_AUROC,random_sample_1_AUROC,random_sample_2_AUROC,random_sample_3_AUROC,random_sample_4_AUROC
+clinvar,DeepACE-random,0.7402,0.7332,0.7403,0.7473,0.7399
+clinvar,DeepACE-cold,0.7866,0.7918,0.7848,0.7795,0.7904
+cagi5,DeepACE-random,0.7138,0.7155,0.7101,0.7172,0.7125
+cagi5,DeepACE-cold,0.729,0.726,0.7456,0.7366,0.7076
+gelrna,DeepACE-random,0.7793,0.7805,0.7916,0.7761,0.7689
+gelrna,DeepACE-cold,0.777,0.7783,0.7953,0.7833,0.7511
+mprasat,DeepACE-random,0.7394,0.7459,0.7579,0.7152,0.7387
+mprasat,DeepACE-cold,0.7239,0.7274,0.747,0.7187,0.7023

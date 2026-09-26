@@ -1,0 +1,4 @@
+Algorithm,Mean,SD,random_sample_1,random_sample_2,random_sample_3,random_sample_4
+DeepACE-randaug,0.714012,0.005219,0.708028,0.715587,0.720322,0.71211
+DeepACE-random,0.699944,0.004964,0.696365,0.706909,0.700106,0.696395
+DeepACE-cold,0.689357,0.004063,0.685322,0.691367,0.694055,0.686686

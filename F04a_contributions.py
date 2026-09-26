@@ -261,9 +261,9 @@ for dataset in ["MPRA", "epigenetics"]:
     plot_tag = motif.split("_")[0] if dataset == "epigenetics" else cell
     print(f"Start Processing: {dataset}, {plot_tag}, {mode}, mahalanobis, pseudo=random")
     
-        if dataset == "MPRA":
+        if dataset == "epigenetics":
             output_dir = "./Preds/D04_deeptfbu/interpret_epigenetics_pseudo_random_mahalanobis"
-        elif dataset == "epigenetics":
+        elif dataset == "MPRA":
             output_dir = "./Preds/D06_mpra/interpret_MPRA_pseudo_random_mahalanobis"
 
         for i, cell in enumerate(cells):

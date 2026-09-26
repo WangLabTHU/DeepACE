@@ -1,0 +1,11 @@
+column_index,combo_name,n_models,models,size_source,random_seed
+1,Basset_DanQ_MPRALegNet_CLIPNET_Expecto,5,Basset + DanQ + MPRALegNet + CLIPNET + Expecto,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+2,DanQ_DeepDNAshape_Enformer,3,DanQ + DeepDNAshape + Enformer,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+3,Malinois_Basset,2,Malinois + Basset,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+4,DanQ,1,DanQ,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+5,DeepDNAshape,1,DeepDNAshape,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+6,Malinois_CLIPNET_Puffin_Enformer_Borzoi,5,Malinois + CLIPNET + Puffin + Enformer + Borzoi,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+7,DeepDNAshape_Basenji2_Expecto,3,DeepDNAshape + Basenji2 + Expecto,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+8,MPRALegNet_SpliceAI,2,MPRALegNet + SpliceAI,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+9,Borzoi,1,Borzoi,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42
+10,Puffin,1,Puffin,published_comb_csv: ./Figs/F04_interpret_robust/F04d_robust_heatmap/comb_model_validation.csv,42

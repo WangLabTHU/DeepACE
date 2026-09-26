@@ -1,6 +1,4 @@
 '''
-画序列的突变后的小提琴图, 在CAGI5的15个数据集
-
 /home/hyu/Digital_Platform/manuals/fig2e_point_mutation.py
 '''
 
@@ -36,6 +34,8 @@ from sklearn.decomposition import PCA
 from scipy.ndimage import gaussian_filter1d
 from scipy.spatial.distance import mahalanobis
 
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 def compute_sample_similarity(pred_alt, pred_ref):
     pred_alt = np.asarray(pred_alt)

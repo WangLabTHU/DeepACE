@@ -117,7 +117,7 @@ def find_min_lfc_window(mat_lfc, ref_seq, window_size=None):
     return mat_lfc[start:end, :], ref_seq[start:end], start, end
 
 def plot_motif_mutation_heatmaps( motif, df_seqs, df_pca, df_evo2, df_promoterAI, 
-                                 output_dir, window_size=60):
+                                 output_dir, window_size=600):
     mat_lfc, ref_seq = build_mutation_matrix( df_seqs, df_seqs["VariantExpressionEffect (log2)"].values)
     mat_pca, _ = build_mutation_matrix(df_seqs, df_pca["scores"].values)
     mat_evo2, _ = build_mutation_matrix(df_seqs, df_evo2["scores"].values)
@@ -126,6 +126,11 @@ def plot_motif_mutation_heatmaps( motif, df_seqs, df_pca, df_evo2, df_promoterAI
     mat_pca_slice = mat_pca[s:e, :]
     mat_evo2_slice = mat_evo2[s:e, :]
     mat_promAI_slice = mat_promAI[s:e, :]
+
+    # mat_lfc_slice, ref_seq_slice = mat_lfc, ref_seq
+    # mat_pca_slice = mat_pca
+    # mat_evo2_slice = mat_evo2
+    # mat_promAI_slice = mat_promAI
     
     heatmap_data = {
         'Reference_Sequence': list(ref_seq_slice),
@@ -138,7 +143,7 @@ def plot_motif_mutation_heatmaps( motif, df_seqs, df_pca, df_evo2, df_promoterAI
         heatmap_data[f'PromAI_{nuc}'] = mat_promAI_slice[:, i]
     save_name_base = f"heatmap_{motif}_combined"
     csv_save_path = os.path.join(output_dir, f"{save_name_base}.csv")
-    # pd.DataFrame(heatmap_data).to_csv(csv_save_path, index=False)
+    pd.DataFrame(heatmap_data).to_csv(csv_save_path, index=False)
     print(f"Saved heatmap data for {motif} → {csv_save_path}")
     
     L2 = len(ref_seq_slice)
@@ -190,7 +195,7 @@ def plot_motif_per_base_conservation(motif, df_seqs, df_pca, df_evo2, df_promote
     }
     save_name_base = f"per_base_conservation_{motif}"
     csv_save_path = os.path.join(output_dir, f"{save_name_base}.csv")
-    # pd.DataFrame(conservation_data).to_csv(csv_save_path, index=False)
+    pd.DataFrame(conservation_data).to_csv(csv_save_path, index=False)
     print(f"Saved per-base conservation data for {motif} → {csv_save_path}")
 
     figsize = (L / 20, 8)
@@ -221,8 +226,10 @@ def plot_motif_per_base_conservation(motif, df_seqs, df_pca, df_evo2, df_promote
 
 metric = "mahalanobis"
 dataset = "MPRABase"
-motif_list = ["TERT", "HBG1", "LDLR", "F9", "GP1BA", "IRF4", "IRF6", "PKLR", "ZFAND3", "SORT1", 
-              "HBB", "UC88", "MYC_rs6983267", "RET", "TCF7L2"] 
+# motif_list = ["TERT", "HBG1", "LDLR", "F9", "GP1BA", "IRF4", "IRF6", "PKLR", "ZFAND3", "SORT1", 
+#               "HBB", "UC88", "MYC_rs6983267", "RET", "TCF7L2"] 
+
+motif_list = ["SORT1"] 
 
 output_dir = f"./Supps/S07_variant_cons_cagi5/"
 print(f"Processing dataset: {dataset}")

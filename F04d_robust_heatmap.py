@@ -27,10 +27,18 @@ from sklearn.covariance import EmpiricalCovariance
 from sklearn.decomposition import TruncatedSVD
 from scipy.stats import pearsonr, spearmanr
 from matplotlib.lines import Line2D
+from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
 
 random.seed(42)
 np.random.seed(42)
 from math import pi
+from matplotlib.colors import LinearSegmentedColormap
+
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.sans-serif'] = ['Helvetica', 'Arial', 'DejaVu Sans']
+plt.rcParams['svg.fonttype'] = 'none'
 
 def load_data(cell, motif=None):
     if dataset == "MPRA":
@@ -229,229 +237,229 @@ fc_matrix_single = np.full((n_scen, len(model_list) + 1), np.nan)
 '''
 combined models
 '''
-for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
-    scenario_name = f"{dataset}_{plot_tag}"
-    primary_data, pseudo_data, labels = load_data(cell, motif)
+# for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
+#     scenario_name = f"{dataset}_{plot_tag}"
+#     primary_data, pseudo_data, labels = load_data(cell, motif)
 
-    filt_primary = filter_data_by_models(primary_data, model_list, anno_df)
-    filt_pseudo = filter_data_by_models(pseudo_data, model_list, anno_df)
-    combined = np.vstack((filt_primary, filt_pseudo)) if len(filt_pseudo) > 0 else filt_primary
+#     filt_primary = filter_data_by_models(primary_data, model_list, anno_df)
+#     filt_pseudo = filter_data_by_models(pseudo_data, model_list, anno_df)
+#     combined = np.vstack((filt_primary, filt_pseudo)) if len(filt_pseudo) > 0 else filt_primary
 
-    uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined)
-    primary_data = uni_selected[:-len(filt_pseudo)] if len(filt_pseudo) > 0 else uni_selected
-    pseudo_data = uni_selected[-len(filt_pseudo):] if len(filt_pseudo) > 0 else np.array([])
-    sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
-    fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
-    fc_matrix_single[scen_idx, -1] = fc
-    print(f"    → {scenario_name}: DeepACE = {fc:.4f}")
+#     uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined)
+#     primary_data = uni_selected[:-len(filt_pseudo)] if len(filt_pseudo) > 0 else uni_selected
+#     pseudo_data = uni_selected[-len(filt_pseudo):] if len(filt_pseudo) > 0 else np.array([])
+#     sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
+#     fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
+#     fc_matrix_single[scen_idx, -1] = fc
+#     print(f"    → {scenario_name}: DeepACE = {fc:.4f}")
       
-    output_dir_pr = os.path.join(output_dir, f"{scenario_name}/deepace")
-    os.makedirs(output_dir_pr, exist_ok=True)
-    analyze_pseudo_similarity_simplified(sample_data, sample_labels, sorted_labels, f"deepace_{scenario_name}", output_dir=output_dir_pr)
+#     output_dir_pr = os.path.join(output_dir, f"{scenario_name}/deepace")
+#     os.makedirs(output_dir_pr, exist_ok=True)
+#     analyze_pseudo_similarity_simplified(sample_data, sample_labels, sorted_labels, f"deepace_{scenario_name}", output_dir=output_dir_pr)
 
 
 
 '''
 single model
 '''
-for model_idx, model in enumerate(model_list):
-    print(f"  Evaluating single model: {model}")
-    for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
-        scenario_name = f"{dataset}_{plot_tag}"
-        primary_data, pseudo_data, labels = load_data(cell, motif)
-        filt_primary = filter_data_by_models(primary_data, [model], anno_df)
-        filt_pseudo = filter_data_by_models(pseudo_data, [model], anno_df)
-        combined = np.vstack((filt_primary, filt_pseudo)) if len(filt_pseudo) > 0 else filt_primary
+# for model_idx, model in enumerate(model_list):
+#     print(f"  Evaluating single model: {model}")
+#     for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
+#         scenario_name = f"{dataset}_{plot_tag}"
+#         primary_data, pseudo_data, labels = load_data(cell, motif)
+#         filt_primary = filter_data_by_models(primary_data, [model], anno_df)
+#         filt_pseudo = filter_data_by_models(pseudo_data, [model], anno_df)
+#         combined = np.vstack((filt_primary, filt_pseudo)) if len(filt_pseudo) > 0 else filt_primary
 
-        if combined.shape[1] <= 1:
-            continue
-        elif combined.shape[1] < 50:
-            uni_selected = combined
-        else:
-            uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined)
-        primary_data = uni_selected[:-len(filt_pseudo)] if len(filt_pseudo) > 0 else uni_selected
-        pseudo_data = uni_selected[-len(filt_pseudo):] if len(filt_pseudo) > 0 else np.array([])
-        sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
-        fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
-        fc_matrix_single[scen_idx, model_idx] = fc
-        print(f"    → {scenario_name}: {model} FC={fc:.4f}")
+#         if combined.shape[1] <= 1:
+#             continue
+#         elif combined.shape[1] < 50:
+#             uni_selected = combined
+#         else:
+#             uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined)
+#         primary_data = uni_selected[:-len(filt_pseudo)] if len(filt_pseudo) > 0 else uni_selected
+#         pseudo_data = uni_selected[-len(filt_pseudo):] if len(filt_pseudo) > 0 else np.array([])
+#         sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
+#         fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
+#         fc_matrix_single[scen_idx, model_idx] = fc
+#         print(f"    → {scenario_name}: {model} FC={fc:.4f}")
         
-single_cols = model_list + ["DeepACE"]
-fc_df_single = pd.DataFrame(fc_matrix_single, index=scenario_names, columns=single_cols)
-single_csv = os.path.join(output_dir, "single_model_validation.csv")
-fc_df_single.to_csv(single_csv, float_format='%.6f')
-print(f"\nSingle-model cross-validation matrix saved: {single_csv}")
+# single_cols = model_list + ["DeepACE"]
+# fc_df_single = pd.DataFrame(fc_matrix_single, index=scenario_names, columns=single_cols)
+# single_csv = os.path.join(output_dir, "single_model_validation.csv")
+# fc_df_single.to_csv(single_csv, float_format='%.6f')
+# print(f"\nSingle-model cross-validation matrix saved: {single_csv}")
 
 
 '''
 combination: start from enformer, task=HNF4A
 '''
 
-print("\n" + "="*60)
-print("GENERATING GREEDY-SEARCH TABLES")
-print("="*60)
-scenarios_list = [
-    ("MPRA", "HepG2", None, "HepG2"),
-    ("MPRA", "K562", None, "K562"),
-    ("MPRA", "SKNSH", None, "SKNSH"),
-    ("epigenetics", "HepG2", "ELF1_1_aim", "ELF1"),
-    ("epigenetics", "HepG2", "HNF1A_1_aim", "HNF1A"),
-    ("epigenetics", "HepG2", "HNF4A_1_aim", "HNF4A")
-]
-scenario_results = {}
-for _, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
-    scenario_name = f"{dataset}_{plot_tag}"
-    selected_models = []
-    fold_change_history = []
-    prev_fold_change = 0
-    prev_selected_model = None
-    primary_data, pseudo_data, labels = load_data(cell, motif)
+# print("\n" + "="*60)
+# print("GENERATING GREEDY-SEARCH TABLES")
+# print("="*60)
+# scenarios_list = [
+#     ("MPRA", "HepG2", None, "HepG2"),
+#     ("MPRA", "K562", None, "K562"),
+#     ("MPRA", "SKNSH", None, "SKNSH"),
+#     ("epigenetics", "HepG2", "ELF1_1_aim", "ELF1"),
+#     ("epigenetics", "HepG2", "HNF1A_1_aim", "HNF1A"),
+#     ("epigenetics", "HepG2", "HNF4A_1_aim", "HNF4A")
+# ]
+# scenario_results = {}
+# for _, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
+#     scenario_name = f"{dataset}_{plot_tag}"
+#     selected_models = []
+#     fold_change_history = []
+#     prev_fold_change = 0
+#     prev_selected_model = None
+#     primary_data, pseudo_data, labels = load_data(cell, motif)
 
-    for round_cnt in range(0, 5+1):
-        print(f"\n--- Round {round_cnt}: Single-model evaluation for {scenario_name} ---")
-        fold_change_dict = {}
-        for model in model_list:
-            print(f"  Evaluating: {model}")
-            if model in selected_models:
-                continue
-            selected_models_temp = selected_models + [model]
-            primary_data_temp = filter_data_by_models(primary_data, selected_models_temp, anno_df)
-            pseudo_data_temp = filter_data_by_models(pseudo_data, selected_models_temp, anno_df)
-            combined_data = np.vstack((primary_data_temp, pseudo_data_temp)) if len(pseudo_data_temp) > 0 else primary_data_temp
-            n_features = combined_data.shape[1]
-            if n_features <= 1:
-                fold_change_dict[model] = np.nan
-                continue
-            elif n_features < 50:
-                uni_selected = combined_data
-            else:
-                uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data)
-            primary_data_temp = uni_selected[:-len(pseudo_data_temp)] if len(pseudo_data_temp) > 0 else uni_selected
-            pseudo_data_temp = uni_selected[-len(pseudo_data_temp):] if len(pseudo_data_temp) > 0 else np.array([])
-            sample_data, sample_labels, sorted_labels = preprocess_data(primary_data_temp, pseudo_data_temp, labels)
-            fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
-            fold_change_dict[model] = fc
-        valid_fcs = {m: fc for m, fc in fold_change_dict.items() if not np.isnan(fc)}
-        if not valid_fcs:
-            print("No valid improvement. Stopping.")
-            break
-        selected_model = max(valid_fcs, key=valid_fcs.get)
-        current_fc = valid_fcs[selected_model]
-        if current_fc <= prev_fold_change:
-            print(f"No improvement ({current_fc:.4f} ≤ {prev_fold_change:.4f}). Stopping.")
-            break
-        ## saving analyzation records
-        selected_models_temp = selected_models + [selected_model]
-        primary_data_temp = filter_data_by_models(primary_data, selected_models_temp, anno_df)
-        pseudo_data_temp = filter_data_by_models(pseudo_data, selected_models_temp, anno_df)
-        combined_data = np.vstack((primary_data_temp, pseudo_data_temp)) if len(pseudo_data_temp) > 0 else primary_data_temp
-        n_features = combined_data.shape[1]
-        if n_features > 1:
-            uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data) if n_features >= 50 else combined_data
-            primary_data_temp = uni_selected[:-len(pseudo_data_temp)] if len(pseudo_data_temp) > 0 else uni_selected
-            pseudo_data_temp = uni_selected[-len(pseudo_data_temp):] if len(pseudo_data_temp) > 0 else np.array([])
-            sample_data, sample_labels, sorted_labels = preprocess_data(primary_data_temp, pseudo_data_temp, labels)
-            output_dir_pr = os.path.join(output_dir, f"{scenario_name}/round{round_cnt}")
-            os.makedirs(output_dir_pr, exist_ok=True)
-            analyze_pseudo_similarity_simplified(sample_data, sample_labels, sorted_labels, 
-                                                 f"round{round_cnt}_{selected_model}", output_dir=output_dir_pr)
-        ## reporting and update
-        delta_selected = current_fc - prev_fold_change
-        selected_models.append(selected_model)
-        fold_change_history.append(current_fc)
-        prev_fold_change = current_fc
-        prev_selected_model = selected_model
-        print(f"Round {round_cnt}: +{selected_model} | FC: {current_fc:.4f} | Δ: +{delta_selected:.4f}")
-        round_cnt += 1
-    df = pd.read_csv( os.path.join(output_dir, "single_model_validation.csv") )
-    row = df[df.iloc[:, 0] == scenario_name]    
-    scenario_results[scenario_name] = {
-        "selected_models": selected_models,
-        "fold_change_history": fold_change_history,
-        "final_fold_change": fold_change_history[-1] if fold_change_history else np.nan,
-        "deepace_fc": row["DeepACE"]}
-summary_data = []
-for name, res in scenario_results.items():
-    summary_data.append({
-        "scenario": name,
-        "selected_models": " → ".join(res["selected_models"]),
-        "rounds": len(res["fold_change_history"]),
-        "deepace_fc": res["deepace_fc"],
-        "final_fc": res["final_fold_change"],
-        "history_fc": " | ".join([f"{fc:.3f}" for fc in res["fold_change_history"]])
-    })
-summary_data = pd.DataFrame(summary_data)
-summary_data.to_csv( os.path.join(output_dir, f"greedy_search.csv") )
+#     for round_cnt in range(0, 5+1):
+#         print(f"\n--- Round {round_cnt}: Single-model evaluation for {scenario_name} ---")
+#         fold_change_dict = {}
+#         for model in model_list:
+#             print(f"  Evaluating: {model}")
+#             if model in selected_models:
+#                 continue
+#             selected_models_temp = selected_models + [model]
+#             primary_data_temp = filter_data_by_models(primary_data, selected_models_temp, anno_df)
+#             pseudo_data_temp = filter_data_by_models(pseudo_data, selected_models_temp, anno_df)
+#             combined_data = np.vstack((primary_data_temp, pseudo_data_temp)) if len(pseudo_data_temp) > 0 else primary_data_temp
+#             n_features = combined_data.shape[1]
+#             if n_features <= 1:
+#                 fold_change_dict[model] = np.nan
+#                 continue
+#             elif n_features < 50:
+#                 uni_selected = combined_data
+#             else:
+#                 uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data)
+#             primary_data_temp = uni_selected[:-len(pseudo_data_temp)] if len(pseudo_data_temp) > 0 else uni_selected
+#             pseudo_data_temp = uni_selected[-len(pseudo_data_temp):] if len(pseudo_data_temp) > 0 else np.array([])
+#             sample_data, sample_labels, sorted_labels = preprocess_data(primary_data_temp, pseudo_data_temp, labels)
+#             fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
+#             fold_change_dict[model] = fc
+#         valid_fcs = {m: fc for m, fc in fold_change_dict.items() if not np.isnan(fc)}
+#         if not valid_fcs:
+#             print("No valid improvement. Stopping.")
+#             break
+#         selected_model = max(valid_fcs, key=valid_fcs.get)
+#         current_fc = valid_fcs[selected_model]
+#         if current_fc <= prev_fold_change:
+#             print(f"No improvement ({current_fc:.4f} ≤ {prev_fold_change:.4f}). Stopping.")
+#             break
+#         ## saving analyzation records
+#         selected_models_temp = selected_models + [selected_model]
+#         primary_data_temp = filter_data_by_models(primary_data, selected_models_temp, anno_df)
+#         pseudo_data_temp = filter_data_by_models(pseudo_data, selected_models_temp, anno_df)
+#         combined_data = np.vstack((primary_data_temp, pseudo_data_temp)) if len(pseudo_data_temp) > 0 else primary_data_temp
+#         n_features = combined_data.shape[1]
+#         if n_features > 1:
+#             uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data) if n_features >= 50 else combined_data
+#             primary_data_temp = uni_selected[:-len(pseudo_data_temp)] if len(pseudo_data_temp) > 0 else uni_selected
+#             pseudo_data_temp = uni_selected[-len(pseudo_data_temp):] if len(pseudo_data_temp) > 0 else np.array([])
+#             sample_data, sample_labels, sorted_labels = preprocess_data(primary_data_temp, pseudo_data_temp, labels)
+#             output_dir_pr = os.path.join(output_dir, f"{scenario_name}/round{round_cnt}")
+#             os.makedirs(output_dir_pr, exist_ok=True)
+#             analyze_pseudo_similarity_simplified(sample_data, sample_labels, sorted_labels, 
+#                                                  f"round{round_cnt}_{selected_model}", output_dir=output_dir_pr)
+#         ## reporting and update
+#         delta_selected = current_fc - prev_fold_change
+#         selected_models.append(selected_model)
+#         fold_change_history.append(current_fc)
+#         prev_fold_change = current_fc
+#         prev_selected_model = selected_model
+#         print(f"Round {round_cnt}: +{selected_model} | FC: {current_fc:.4f} | Δ: +{delta_selected:.4f}")
+#         round_cnt += 1
+#     df = pd.read_csv( os.path.join(output_dir, "single_model_validation.csv") )
+#     row = df[df.iloc[:, 0] == scenario_name]    
+#     scenario_results[scenario_name] = {
+#         "selected_models": selected_models,
+#         "fold_change_history": fold_change_history,
+#         "final_fold_change": fold_change_history[-1] if fold_change_history else np.nan,
+#         "deepace_fc": row["DeepACE"]}
+# summary_data = []
+# for name, res in scenario_results.items():
+#     summary_data.append({
+#         "scenario": name,
+#         "selected_models": " → ".join(res["selected_models"]),
+#         "rounds": len(res["fold_change_history"]),
+#         "deepace_fc": res["deepace_fc"],
+#         "final_fc": res["final_fold_change"],
+#         "history_fc": " | ".join([f"{fc:.3f}" for fc in res["fold_change_history"]])
+#     })
+# summary_data = pd.DataFrame(summary_data)
+# summary_data.to_csv( os.path.join(output_dir, f"greedy_search.csv") )
 
 
 '''
 combination: cross validations
 '''
 
-summary_data = pd.read_csv( os.path.join(output_dir, f"greedy_search.csv") )
-optimal_combinations = {}
-for _, row in summary_data.iterrows():
-    scenario = row["scenario"]
-    models_str = row["selected_models"]
-    model_list_comb = [m.strip() for m in models_str.split("→")]
-    optimal_combinations[scenario] = model_list_comb
-uniq_combinations = []
-uniq_combinations_ids = []
-for scenario, models in optimal_combinations.items():
-    name = "_".join(models)
-    if name not in uniq_combinations_ids:
-        uniq_combinations_ids.append(name)
-        uniq_combinations.append(models)
+# summary_data = pd.read_csv( os.path.join(output_dir, f"greedy_search.csv") )
+# optimal_combinations = {}
+# for _, row in summary_data.iterrows():
+#     scenario = row["scenario"]
+#     models_str = row["selected_models"]
+#     model_list_comb = [m.strip() for m in models_str.split("→")]
+#     optimal_combinations[scenario] = model_list_comb
+# uniq_combinations = []
+# uniq_combinations_ids = []
+# for scenario, models in optimal_combinations.items():
+#     name = "_".join(models)
+#     if name not in uniq_combinations_ids:
+#         uniq_combinations_ids.append(name)
+#         uniq_combinations.append(models)
 
-scenarios_list = [
-    ("MPRA", "HepG2", None, "HepG2"),
-    ("MPRA", "K562", None, "K562"),
-    ("MPRA", "SKNSH", None, "SKNSH"),
-    ("epigenetics", "HepG2", "ELF1_1_aim", "ELF1"),
-    ("epigenetics", "HepG2", "HNF1A_1_aim", "HNF1A"),
-    ("epigenetics", "HepG2", "HNF4A_1_aim", "HNF4A")
-]
-anno_df = pd.read_csv(f"./total_features.csv")
-scenario_names = [f"{dataset}_{plot_tag}" for dataset, _, _, plot_tag in scenarios_list]
-n_scen = len(scenario_names)
-n_combs = len(uniq_combinations)
-fc_matrix_comb = np.full((n_scen, n_combs + 1), np.nan)
+# scenarios_list = [
+#     ("MPRA", "HepG2", None, "HepG2"),
+#     ("MPRA", "K562", None, "K562"),
+#     ("MPRA", "SKNSH", None, "SKNSH"),
+#     ("epigenetics", "HepG2", "ELF1_1_aim", "ELF1"),
+#     ("epigenetics", "HepG2", "HNF1A_1_aim", "HNF1A"),
+#     ("epigenetics", "HepG2", "HNF4A_1_aim", "HNF4A")
+# ]
+# anno_df = pd.read_csv(f"./total_features.csv")
+# scenario_names = [f"{dataset}_{plot_tag}" for dataset, _, _, plot_tag in scenarios_list]
+# n_scen = len(scenario_names)
+# n_combs = len(uniq_combinations)
+# fc_matrix_comb = np.full((n_scen, n_combs + 1), np.nan)
 
-for comb_idx, comb_models in enumerate(uniq_combinations):
-    comb_name = "_".join(comb_models)
-    print(f"\nEvaluating combination [{comb_idx+1}/{n_combs}]: {comb_name}")
+# for comb_idx, comb_models in enumerate(uniq_combinations):
+#     comb_name = "_".join(comb_models)
+#     print(f"\nEvaluating combination [{comb_idx+1}/{n_combs}]: {comb_name}")
     
-    for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
-        scenario_name = f"{dataset}_{plot_tag}"
-        primary_data, pseudo_data, labels = load_data(cell, motif)
-        primary_data = filter_data_by_models(primary_data, comb_models, anno_df)
-        pseudo_data = filter_data_by_models(pseudo_data, comb_models, anno_df)
-        combined_data = np.vstack((primary_data, pseudo_data)) if len(pseudo_data) > 0 else primary_data
+#     for scen_idx, (dataset, cell, motif, plot_tag) in enumerate(scenarios_list):
+#         scenario_name = f"{dataset}_{plot_tag}"
+#         primary_data, pseudo_data, labels = load_data(cell, motif)
+#         primary_data = filter_data_by_models(primary_data, comb_models, anno_df)
+#         pseudo_data = filter_data_by_models(pseudo_data, comb_models, anno_df)
+#         combined_data = np.vstack((primary_data, pseudo_data)) if len(pseudo_data) > 0 else primary_data
                 
-        n_features = combined_data.shape[1]
-        if n_features <= 1:
-            print(" [skip: <2 feats]")
-            continue
-        elif n_features < 50:
-            uni_selected = combined_data
-        else:
-            uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data)
+#         n_features = combined_data.shape[1]
+#         if n_features <= 1:
+#             print(" [skip: <2 feats]")
+#             continue
+#         elif n_features < 50:
+#             uni_selected = combined_data
+#         else:
+#             uni_selected = PCA(n_components=50, random_state=42).fit_transform(combined_data)
         
-        primary_data = uni_selected[:-len(pseudo_data)] if len(pseudo_data) > 0 else uni_selected
-        pseudo_data = uni_selected[-len(pseudo_data):] if len(pseudo_data) > 0 else np.array([])
-        sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
-        fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
+#         primary_data = uni_selected[:-len(pseudo_data)] if len(pseudo_data) > 0 else uni_selected
+#         pseudo_data = uni_selected[-len(pseudo_data):] if len(pseudo_data) > 0 else np.array([])
+#         sample_data, sample_labels, sorted_labels = preprocess_data(primary_data, pseudo_data, labels)
+#         fc = compute_fold_change(sample_data, sample_labels, sorted_labels)
         
-        fc_matrix_comb[scen_idx, comb_idx] = fc
-        df = pd.read_csv( os.path.join(output_dir, "single_model_validation.csv") )
-        row = df[df.iloc[:, 0] == scenario_name]  
-        fc_matrix_comb[scen_idx, -1] = row["DeepACE"].values
+#         fc_matrix_comb[scen_idx, comb_idx] = fc
+#         df = pd.read_csv( os.path.join(output_dir, "single_model_validation.csv") )
+#         row = df[df.iloc[:, 0] == scenario_name]  
+#         fc_matrix_comb[scen_idx, -1] = row["DeepACE"].values
 
-columns = uniq_combinations_ids + ["DeepACE"]
-fc_df_comb = pd.DataFrame(fc_matrix_comb, index=scenario_names, columns=columns)
-output_csv = os.path.join(output_dir, "comb_model_validation.csv")
-fc_df_comb.to_csv(output_csv)
-print(f"\nFull cross-validation matrix saved: {output_csv}")
+# columns = uniq_combinations_ids + ["DeepACE"]
+# fc_df_comb = pd.DataFrame(fc_matrix_comb, index=scenario_names, columns=columns)
+# output_csv = os.path.join(output_dir, "comb_model_validation.csv")
+# fc_df_comb.to_csv(output_csv)
+# print(f"\nFull cross-validation matrix saved: {output_csv}")
 
 
 
@@ -486,10 +494,22 @@ mean_row = intensity_matrix.mean(axis=0)
 intensity_matrix = np.vstack([intensity_matrix, mean_row])
 
 plot_df = fc_df_comb.copy()
-fig, ax = plt.subplots(figsize=(len(fc_df_comb.columns) * 1.5 + 4, 8))
-vmin, vmax = 0.5, 1.5
-norm = plt.Normalize(vmin=vmin, vmax=vmax)
-cmap = plt.cm.get_cmap("RdBu_r")
+# fig, ax = plt.subplots(figsize=(len(fc_df_comb.columns) * 1.5 + 4, 8))
+fig, ax = plt.subplots(figsize=(9, 5))
+# vmin, vmax = 0.5, 1.5
+# norm = plt.Normalize(vmin=vmin, vmax=vmax)
+custom_cmap = LinearSegmentedColormap.from_list(
+    "GreenWhiteYellow",
+    ["#74a892", "#ffffff", "#e5c185"]
+)
+cmap = custom_cmap
+norm = TwoSlopeNorm(vmin=0.5, vcenter=1.0, vmax=1.5)
+# cmap = plt.cm.get_cmap("RdBu_r")
+
+custom_cmap = LinearSegmentedColormap.from_list(
+    "GreenWhiteYellow",
+    ["#74a892", "#ffffff", "#e5c185"])
+cmap = custom_cmap
 
 for i in range(len(plot_df)):
     for j in range(len(plot_df.columns)):
@@ -507,26 +527,50 @@ for i in range(len(plot_df)):
         fontweight = 'normal'
         color_text = 'white' if abs(intensity) > 1.2 or abs(intensity) < 0.8 else 'black'
         ax.text(j + 0.5, i + 0.5, text, ha='center', va='center',
-                fontsize=12, fontweight=fontweight, color=color_text)
+                fontsize=16, fontweight=fontweight, color=color_text)
 
 ax.set_xlim(0, len(plot_df.columns))
 ax.set_ylim(0, len(plot_df))
 ax.set_xticks(np.arange(len(plot_df.columns)) + 0.5)
 ax.set_yticks(np.arange(len(plot_df)) + 0.5)
 tmp_xlabels = plot_df.columns.str.replace('_', '\n')
-ax.set_xticklabels(tmp_xlabels, rotation=0, ha='center', fontsize=12)
-ax.set_yticklabels(plot_df.index, fontsize=12)
+# ax.set_xticklabels(tmp_xlabels, rotation=0, ha='center', fontsize=18)
+ax.set_xticklabels([])
+ax.set_yticklabels(plot_df.index, fontsize=18)
 ax.invert_yaxis()
 
 # Colorbar
+# sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+# sm.set_array([])
+# cbar = fig.colorbar(sm, ax=ax, shrink=0.8, aspect=20)
+# cbar.set_label('FC / DeepACE', rotation=270, labelpad=15, fontsize=11)
+# cbar.set_ticks([0.5, 0.75, 1.0, 1.25, 1.5])
+# cbar.set_ticklabels(['0.5×', '0.75×', '1.0×', '1.25×', '1.5×'])
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
-cbar = fig.colorbar(sm, ax=ax, shrink=0.8, aspect=20)
-cbar.set_label('FC / DeepACE', rotation=270, labelpad=15, fontsize=11)
-cbar.set_ticks([0.5, 0.75, 1.0, 1.25, 1.5])
-cbar.set_ticklabels(['0.5×', '0.75×', '1.0×', '1.25×', '1.5×'])
+cax = fig.add_axes([1.01, 0.72, 0.015, 0.15])
+cbar = fig.colorbar(sm, cax=cax)
+# cbar.set_label(
+#     'FC / DeepACE',
+#     rotation=0,
+#     labelpad=20,
+#     fontsize=18
+# )
+cbar.ax.text(
+    3, -0.6,
+    'Relative\nFC',
+    transform=cbar.ax.transAxes,
+    ha='center',
+    va='center',
+    fontsize=18
+)
+cbar.ax.tick_params(labelsize=16)
+cbar.set_ticks([0.5, 1.0, 1.5])
+cbar.set_ticklabels(['0.5×', '1.0×', '1.5×'])
+
+
 plt.tight_layout()
-output_png_comb = os.path.join(output_dir, "comb_heatmap_normalized.pdf")
+output_png_comb = os.path.join(output_dir, "comb_heatmap_normalized.svg")
 plt.savefig(output_png_comb, dpi=400, bbox_inches='tight')
 plt.close()
 print(f"Comb-model heatmap saved: {output_png_comb}")

@@ -87,7 +87,8 @@ def preprocess_data(primary_data, pseudo_data, labels):
     
     return sample_data, sample_labels, sorted_labels
 
-
+def get_values(df, idx, column_name):
+    return df.iloc[idx][column_name]
 
 ''' Radar Preparation for algos '''
 
@@ -108,9 +109,9 @@ for dataset in ["MPRA", "epigenetics"]:
         motifs = ["ELF1_1_aim", "HNF1A_1_aim", "HNF4A_1_aim"]
     
     if dataset == "MPRA":
-        output_dir = "./Preds/D04_deeptfbu/pca50_epigenetics_pseudo_random_mahalanobis"
-    elif dataset == "epigenetics":
         output_dir = "./Preds/D06_mpra/pca50_MPRA_pseudo_random_mahalanobis"
+    elif dataset == "epigenetics":
+        output_dir = "./Preds/D04_deeptfbu/pca50_epigenetics_pseudo_random_mahalanobis"
     
     for i, cell in enumerate(cells):
         motif = motifs[i] if dataset == "epigenetics" else None

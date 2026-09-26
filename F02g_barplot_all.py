@@ -2,7 +2,7 @@
 /home/hyu/Digital_Platform/manuals/xfig2e_motif_substration_final.py
 
 cp /home/hyu/Digital_Platform/manuals/fig2d_motif_substration/Epigenetics_3TF_cosine/randaug/pca50_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_cosine/
-cp /home/hyu/Digital_Platform/manuals/fig2d_motif_substration/Epigenetics_3TF_mahalanobis/randaug/pca50_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_cosine/
+cp /home/hyu/Digital_Platform/manuals/fig2d_motif_substration/Epigenetics_3TF_mahalanobis/randaug/pca50_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_mahalanobis/
 cp /home/hyu/Digital_Platform/manuals/fig2g_motif_substration_cold/Epigenetics_3TF_mahalanobis/randaug/pca50_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_cold/
 cp /home/hyu/Digital_Platform/manuals/fig2f_motif_substration_promoterAI/Epigenetics_promoterAI/promoterAI_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_promoterai/
 cp /home/hyu/Digital_Platform/manuals/fig2f_motif_substration_evo2/Epigenetics_evo2/evo2_variant_scores_* /home/hyu/DeepACE/Preds/D04_deeptfbu/analysis_evo2/
@@ -225,7 +225,7 @@ for motif in motif_list:
     sim_phastCons470way = df_phastCons470way["scores"].to_numpy()
     sim_gpnmsa = df_gpnmsa["scores"].to_numpy()
 
-    df_alt = pd.read_csv(f"./fig_dataset/motif_Epigenetics_{motif}_alt.csv")
+    df_alt = pd.read_csv(f"./Preds/D04_deeptfbu/motif_Epigenetics_{motif}_alt.csv")
     df_alt = df_alt[valid_mask].reset_index(drop=True)
     df_alt["group_name"] = df_alt["sequence_name"].str.split(r'_-_|_\+_', expand=True)[0]
     group_names_in_order = df_alt["group_name"].drop_duplicates(keep='first')
@@ -420,4 +420,4 @@ for i, tf in enumerate(['ELF1', 'HNF1A', 'HNF4A']):
     plt.xlim(0.4, 1.0)
     sns.despine(left=True, bottom=False)
     plt.tight_layout()
-    plt.savefig(os.path.join(save_dir, f"F02g_barplot_all_{i}.svg"), bbox_inches='tight')
+    plt.savefig(os.path.join(save_dir, f"F02g_barplot_all_{i+1}.svg"), bbox_inches='tight')

@@ -1,0 +1,11 @@
+combo_name,n_models,models,mean_fc,mean_ratio_vs_deepace,min_ratio_vs_deepace,max_ratio_vs_deepace,n_datasets_better_than_deepace
+Basset_DanQ_MPRALegNet_CLIPNET_Expecto,5,Basset + DanQ + MPRALegNet + CLIPNET + Expecto,1.172429,0.829672,0.511870,1.004360,1
+DanQ_DeepDNAshape_Enformer,3,DanQ + DeepDNAshape + Enformer,1.499030,1.006246,0.979294,1.086108,2
+Malinois_Basset,2,Malinois + Basset,1.044915,0.743065,0.449396,0.904059,0
+DanQ,1,DanQ,1.112578,0.777980,0.587913,0.954422,0
+DeepDNAshape,1,DeepDNAshape,1.257020,0.861945,0.543470,1.291859,2
+Malinois_CLIPNET_Puffin_Enformer_Borzoi,5,Malinois + CLIPNET + Puffin + Enformer + Borzoi,1.479921,0.999023,0.976859,1.016580,3
+DeepDNAshape_Basenji2_Expecto,3,DeepDNAshape + Basenji2 + Expecto,1.274560,0.862037,0.736498,1.003804,1
+MPRALegNet_SpliceAI,2,MPRALegNet + SpliceAI,1.171103,0.816552,0.593552,1.023653,1
+Borzoi,1,Borzoi,1.414910,0.960344,0.909396,1.027976,1
+Puffin,1,Puffin,1.038946,0.741409,0.408446,1.047398,1
