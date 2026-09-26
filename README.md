@@ -153,6 +153,7 @@ Higher versions of Python and PyTorch are also expected to be compatible.
 
 The remaining three auxiliary environments are lightweight and relatively easy to configure. The full functionality of this package relies on additional Python dependencies located in the `./envs` directory.
 
+
 ## Dataset Summary
 
 | Dataset Name | Experiment Method | Cell Type | Key Factor | Length | Design Method | Description | Paper |
@@ -179,6 +180,11 @@ The remaining three auxiliary environments are lightweight and relatively easy t
 | MPRABase_SORT1 | MPRA | HepG2 | SORT1 | 600 | mutagenesis | enhancers | [4] |
 | MPRABase_TERT | MPRA | SF7996 | TERT | 259 | mutagenesis | promoters | [4] |
 | MPRABase_ZFAND3 | MPRA | MIN6 | ZFAND3 | 579 | mutagenesis | enhancers | [4] |
+| MPRABase_HBB | MPRA | HEL 92.1.7 | HBB | 187 | mutagenesis | promoters | [4] |
+| MPRABase_UC88 | MPRA | Neuro-2a | UC88 | 590 | mutagenesis | enhancers | [4] |
+| MPRABase_MYC_rs6983267 | MPRA | HEK293T | MYC_rs6983267 | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_RET | MPRA | Neuro-2a | RET | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_TCF7L2 | MPRA | MIN6 | TCF7L2 | 600 | mutagenesis | enhancers | [4] |
 | SCREEN | - | - | - | 600 | natural | CREs | [5] |
 | DS-lentiMPRA-M | lentiMPRA | HepG2 | - | 170 | natural | enhancers | [6] |
 | DS-lentiMPRA-WT | lentiMPRA | HepG2 | - | 170 | natural | enhancers | [6] |
@@ -195,28 +201,63 @@ The remaining three auxiliary environments are lightweight and relatively easy t
 
 ## Model Summary
 
-| Model Name | Encoding Platform | Model Architecture | Model Weights | Model Code | Input Length | Output Length | Output Dim | Knowledge Level | Cell Type | Description | Journal | Year | Paper |
-|------------|------------------|--------------------|---------------|------------|--------------|---------------|------------|----------------|-----------|-------------|---------|------|-------|
-| Malinois | pytorch | CNN | https://storage.googleapis.com/tewhey-public-data/CODA_resources/malinois_artifacts__20211113_021200__287348.tar.gz | https://github.com/sjgosai/boda2/blob/a0fd5f71e6f4466e4d00307d4c74baea0f3d17ea/boda/model/basset.py#L899 | 200 | - | 3 | MPRA | HepG2, K562, SK-N-SH | - | Nature | 2024 | [1] |
-| Basset | torch(lua) | CNN | https://www.dropbox.com/s/rguytuztemctkf8/pretrained_model.th.gz | https://github.com/davek44/Basset/blob/master/src/convnet.lua | 600 | - | 164 | DNase-seq | 164 | - | Genome Research | 2016 | [10] |
-| DanQ | keras | CNN, LSTM | https://cbcl.ics.uci.edu/public_data/DanQ/DanQ_bestmodel.hdf5 | https://github.com/uci-cbcl/DanQ/blob/master/DanQ_train.py | 1000 | - | 919 | DNase-seq (125), ChIP-seq (690), Histone (104) | - | same as DeepSEA | Bioinformatics | 2016 | [11] |
-| MPRALegNet | pytorch | CNN, Transformers | https://zenodo.org/records/8219231 | https://github.com/visze/sequence_cnn_models/blob/7638fce137db0445123efe8d7e2c35e248fafc5f/workflow/scripts/lib/model.py#L71 | 200 | - | 3 | MPRA | HepG2, K562, WTC11 | ±15 bp flanking | Nature | 2025 | [2] |
-| SahuCNN | keras | CNN | https://zenodo.org/records/5101420 | https://zenodo.org/records/5101420 | 170 | - | 2 | ATAC-seq, STARR-seq | GP5d | - | Nature Genetics | 2022 | [12] |
-| APARENT2 | tensorflow | CNN | https://zenodo.org/records/7140895 | https://github.com/johli/aparent-resnet/tree/master/aparent/model | 205 | - | 1 | Alternative Polyadenylation | HEK293 | - | Genome Biology | 2022 | [13] |
-| DeepDNAshape | tensorflow | CNN | https://github.com/JinsenLi/deepDNAshape | https://github.com/JinsenLi/deepDNAshape | L | L(-1) | 14 | DNA shape features | - | - | Nature Communications | 2024 | [14] |
-| CLIPNET | tensorflow | CNN | https://zenodo.org/records/10408623 | https://github.com/Danko-Lab/clipnet | 1000 | - | 1 | PRO-cap quantity | LCL | - | bioRxiv | 2024 | [15] |
-| Puffin | pytorch | CNN | https://github.com/jzhoulab/puffin | https://github.com/jzhoulab/puffin | 1000 | 350 | 5 | CAGE (2), RAMPAGE, GRO-cap, PRO-cap | - | - | Science | 2024 | [16] |
-| Enformer | tensorflow | CNN, Transformers | https://storage.googleapis.com/dm-enformer/models/enformer/sonnet_weights/enformer-fine-tuned-human-1.data-00000-of-00001 | https://github.com/google-deepmind/deepmind-research/blob/master/enformer/enformer.py | 196608 | 896 | 5313 | DNase/ATAC-seq (684), ChIP-seq (2131), Histone (1860), CAGE (638) | - | selecting pytorch version | Nature Methods | 2021 | [17] |
-| Basenji2 | tensorflow | CNN | https://storage.googleapis.com/basenji_barnyard2/model_human.h5 | https://github.com/calico/basenji/blob/9e1c2e2f5b1b37ad11cfd2a1486d786d356d78a5/manuscripts/akita/params.json | 196608 | 1408 | 5313 | DNase/ATAC-seq (684), ChIP-seq (2131), Histone (1860), CAGE (638) | - | selecting pytorch version | Genome Research | 2018 | [18] |
-| Expecto | torch(lua) | CNN | http://deepsea.princeton.edu/media/code/expecto/resources_20190807.tar.gz | https://github.com/FunctionLab/ExPecto/blob/86365c82d6e6dd5435f6c79f538601b11d3d675c/chromatin.py#L86 | 2000 | - | 2002 | DNase-seq (334), ChIP-seq (690), Histone (978) | - | same as DeepSEA beluga | Nature Genetics | 2018 | [19] |
-| Sei | pytorch | CNN | https://doi.org/10.5281/zenodo.4906996 | https://github.com/FunctionLab/sei-framework/blob/main/model/sei.py | 4096 | - | 21907 | DNase/ATAC-seq (2372), ChIP-seq (9471), Histone (10064) | - | - | Nature Genetics | 2022 | [20] |
-| SpliceAI | tensorflow | CNN | https://drive.google.com/file/d/1DrnOVmyLV2rFWWTa-lbZWzP3YzwO59K2/view | https://github.com/Illumina/SpliceAI | L | L+1000 | 3 | Acceptor/Donor/Neither | - | - | Cell | 2019 | [21] |
-| Borzoi | tensorflow | CNN, Transformers | https://github.com/calico/borzoi?tab=readme-ov-file | https://github.com/calico/borzoi?tab=readme-ov-file | 524288 | 16352 | 7611 | DNase-seq (674), ATAC-seq (232), ChIP-seq/Histone (3886), CAGE (1276), RNA (1543) | - | - | Nature Genetics | 2025 | [22] |
-| SegmentNT | pytorch | CNN, BERT | https://huggingface.co/InstaDeepAI/segment_nt/tree/main | https://huggingface.co/InstaDeepAI/segment_nt | L | L | 14 | Genomic annotation probabilities (5'UTR, 3'UTR, lncRNA, CDS, etc.) | - | - | Nature Methods | 2025 | [23] |
+| Model | Platform | Architecture | Weights | Code | In | Out | Dim | Knowledge Level | Cell Type | Note | Reference |
+|---|---|---|---|---|---|---|---|---:|---:|---:|---|---|---|---|
+| Malinois | pytorch | CNN | [weights][w1] | [code][c1] | 200 | - | 3 | MPRA | HepG2, K562, SK-N-SH | - | [1] Nature 2024 |
+| Basset | torch(lua) | CNN | [weights][w2] | [code][c2] | 600 | - | 164 | DNase-seq | 164 | - | [10] Genome Research 2016 |
+| DanQ | keras | CNN, LSTM | [weights][w3] | [code][c3] | 1000 | - | 919 | DNase-seq (125), ChIP-seq (690), Histone (104) | - | same as DeepSEA | [11] Bioinformatics 2016 |
+| MPRALegNet | pytorch | CNN, Transformers | [weights][w4] | [code][c4] | 200 | - | 3 | MPRA | HepG2, K562, WTC11 | ±15 bp flanking | [2] Nature 2025 |
+| SahuCNN | keras | CNN | [weights][w5] | [code][c5] | 170 | - | 2 | ATAC-seq, STARR-seq | GP5d | - | [12] Nature Genetics 2022 |
+| APARENT2 | tensorflow | CNN | [weights][w6] | [code][c6] | 205 | - | 1 | Alternative Polyadenylation | HEK293 | - | [13] Genome Biology 2022 |
+| DeepDNAshape | tensorflow | CNN | [weights][w7] | [code][c7] | L | L(-1) | 14 | DNA shape features | - | - | [14] Nature Communications 2024 |
+| CLIPNET | tensorflow | CNN | [weights][w8] | [code][c8] | 1000 | - | 1 | PRO-cap quantity | LCL | - | [15] bioRxiv 2024 |
+| Puffin | pytorch | CNN | [weights][w9] | [code][c9] | 1000 | 350 | 5 | CAGE (2), RAMPAGE, GRO-cap, PRO-cap | - | - | [16] Science 2024 |
+| Enformer | tensorflow | CNN, Transformers | [weights][w10] | [code][c10] | 196608 | 896 | 5313 | DNase/ATAC-seq (684), ChIP-seq (2131), Histone (1860), CAGE (638) | - | selecting pytorch version | [17] Nature Methods 2021 |
+| Basenji2 | tensorflow | CNN | [weights][w11] | [code][c11] | 196608 | 1408 | 5313 | DNase/ATAC-seq (684), ChIP-seq (2131), Histone (1860), CAGE (638) | - | selecting pytorch version | [18] Genome Research 2018 |
+| Expecto | torch(lua) | CNN | [weights][w12] | [code][c12] | 2000 | - | 2002 | DNase-seq (334), ChIP-seq (690), Histone (978) | - | same as DeepSEA beluga | [19] Nature Genetics 2018 |
+| Sei | pytorch | CNN | [weights][w13] | [code][c13] | 4096 | - | 21907 | DNase/ATAC-seq (2372), ChIP-seq (9471), Histone (10064) | - | - | [20] Nature Genetics 2022 |
+| SpliceAI | tensorflow | CNN | [weights][w14] | [code][c14] | L | L+1000 | 3 | Acceptor/Donor/Neither | - | - | [21] Cell 2019 |
+| Borzoi | tensorflow | CNN, Transformers | [weights][w15] | [code][c15] | 524288 | 16352 | 7611 | DNase-seq (674), ATAC-seq (232), ChIP-seq/Histone (3886), CAGE (1276), RNA (1543) | - | - | [22] Nature Genetics 2025 |
+| SegmentNT | pytorch | CNN, BERT | [weights][w16] | [code][c16] | L | L | 14 | Genomic annotation probabilities (5'UTR, 3'UTR, lncRNA, CDS, etc.) | - | - | [23] Nature Methods 2025 |
+
+`In`, `Out` and `Dim` are the input length in bp, the number of output tokens (receptive fields) and the number of output tracks; `L` denotes the sequence length as handled by that model.
+
+[w1]: https://storage.googleapis.com/tewhey-public-data/CODA_resources/malinois_artifacts__20211113_021200__287348.tar.gz
+[c1]: https://github.com/sjgosai/boda2/blob/a0fd5f71e6f4466e4d00307d4c74baea0f3d17ea/boda/model/basset.py#L899
+[w2]: https://www.dropbox.com/s/rguytuztemctkf8/pretrained_model.th.gz
+[c2]: https://github.com/davek44/Basset/blob/master/src/convnet.lua
+[w3]: https://cbcl.ics.uci.edu/public_data/DanQ/DanQ_bestmodel.hdf5
+[c3]: https://github.com/uci-cbcl/DanQ/blob/master/DanQ_train.py
+[w4]: https://zenodo.org/records/8219231
+[c4]: https://github.com/visze/sequence_cnn_models/blob/7638fce137db0445123efe8d7e2c35e248fafc5f/workflow/scripts/lib/model.py#L71
+[w5]: https://zenodo.org/records/5101420
+[c5]: https://zenodo.org/records/5101420
+[w6]: https://zenodo.org/records/7140895
+[c6]: https://github.com/johli/aparent-resnet/tree/master/aparent/model
+[w7]: https://github.com/JinsenLi/deepDNAshape
+[c7]: https://github.com/JinsenLi/deepDNAshape
+[w8]: https://zenodo.org/records/10408623
+[c8]: https://github.com/Danko-Lab/clipnet
+[w9]: https://github.com/jzhoulab/puffin
+[c9]: https://github.com/jzhoulab/puffin
+[w10]: https://storage.googleapis.com/dm-enformer/models/enformer/sonnet_weights/enformer-fine-tuned-human-1.data-00000-of-00001
+[c10]: https://github.com/google-deepmind/deepmind-research/blob/master/enformer/enformer.py
+[w11]: https://storage.googleapis.com/basenji_barnyard2/model_human.h5
+[c11]: https://github.com/calico/basenji/blob/9e1c2e2f5b1b37ad11cfd2a1486d786d356d78a5/manuscripts/akita/params.json
+[w12]: http://deepsea.princeton.edu/media/code/expecto/resources_20190807.tar.gz
+[c12]: https://github.com/FunctionLab/ExPecto/blob/86365c82d6e6dd5435f6c79f538601b11d3d675c/chromatin.py#L86
+[w13]: https://doi.org/10.5281/zenodo.4906996
+[c13]: https://github.com/FunctionLab/sei-framework/blob/main/model/sei.py
+[w14]: https://drive.google.com/file/d/1DrnOVmyLV2rFWWTa-lbZWzP3YzwO59K2/view
+[c14]: https://github.com/Illumina/SpliceAI
+[w15]: https://github.com/calico/borzoi?tab=readme-ov-file
+[c15]: https://github.com/calico/borzoi?tab=readme-ov-file
+[w16]: https://huggingface.co/InstaDeepAI/segment_nt/tree/main
+[c16]: https://huggingface.co/InstaDeepAI/segment_nt
 
 ---
 
-# Implementations
+# Extending DeepACE
 
 This section explains how to integrate a new functional genomic model into DeepACE. It covers six points: (i) how to organize and integrate new model code by following the structure of the provided DeepACE class template; (ii) how to reuse the five pre-configured environments we released, sparing users the effort of setting up their own; (iii) how to place user-provided model libraries and weights in the designated directories; (iv) how to extract the model's outputs and align them to the DeepACE representation; (v) how to place the output track files in the designated folders; and (vi) how to update `prediction.sh` to run the new model in a single command.
 
