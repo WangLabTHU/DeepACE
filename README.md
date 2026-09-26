@@ -156,53 +156,53 @@ The remaining three auxiliary environments are lightweight and relatively easy t
 
 ## Dataset Summary
 
-| Dataset Name | Experiment Method | Cell Type | Key Factor | Length | Design Method | Description | Paper |
-|--------------|------------------|------------|------------|--------|---------------|-------------|-------|
-| MPRA_HepG2 | MPRA | HepG2 | - | 200 | adalead | enhancers | [1] |
-| MPRA_K562 | MPRA | K562 | - | 200 | adalead | enhancers | [1] |
-| MPRA_SKNSH | MPRA | SKNSH | - | 200 | adalead | enhancers | [1] |
-| lentiMPRA_HepG2 | lentiMPRA | HepG2 | - | 200 | natural | enhancers | [2] |
-| lentiMPRA_K562 | lentiMPRA | K562 | - | 200 | natural | enhancers | [2] |
-| lentiMPRA_WTC11 | lentiMPRA | WTC11 | - | 200 | natural | enhancers | [2] |
-| Epigenetics_ELF1 | MPRA | HepG2 | ELF1 | 168 | deepseed | enhancers | [3] |
-| Epigenetics_HNF1A | MPRA | HepG2 | HNF1A | 168 | deepseed | enhancers | [3] |
-| Epigenetics_HNF4A | MPRA | HepG2 | HNF4A | 168 | deepseed | enhancers | [3] |
-| Epigenetics_118TF | MPRA | HepG2 | - | 168 | deepseed | enhancers | [3] |
-| Epigenetics_train | MPRA | HepG2 | - | 168 | natural | enhancers | [3] |
-| Epigenetics_motif | MPRA | HepG2 | - | 168 | perturbation | enhancers | [3] |
-| MPRABase_F9 | MPRA | HepG2 | F9 | 303 | mutagenesis | promoters | [4] |
-| MPRABase_GP1BA | MPRA | HEL 92.1.7 | GP1BA | 385 | mutagenesis | promoters | [4] |
-| MPRABase_HBG1 | MPRA | HEL 92.1.7 | HBG1 | 274 | mutagenesis | promoters | [4] |
-| MPRABase_IRF4 | MPRA | SK-MEL-28 | IRF4 | 451 | mutagenesis | enhancers | [4] |
-| MPRABase_IRF6 | MPRA | HaCaT | IRF6 | 600 | mutagenesis | enhancers | [4] |
-| MPRABase_LDLR | MPRA | HepG2 | LDLR | 318 | mutagenesis | promoters | [4] |
-| MPRABase_PKLR | MPRA | K562 | PKLR | 470 | mutagenesis | promoters | [4] |
-| MPRABase_SORT1 | MPRA | HepG2 | SORT1 | 600 | mutagenesis | enhancers | [4] |
-| MPRABase_TERT | MPRA | SF7996 | TERT | 259 | mutagenesis | promoters | [4] |
-| MPRABase_ZFAND3 | MPRA | MIN6 | ZFAND3 | 579 | mutagenesis | enhancers | [4] |
-| MPRABase_HBB | MPRA | HEL 92.1.7 | HBB | 187 | mutagenesis | promoters | [4] |
-| MPRABase_UC88 | MPRA | Neuro-2a | UC88 | 590 | mutagenesis | enhancers | [4] |
-| MPRABase_MYC_rs6983267 | MPRA | HEK293T | MYC_rs6983267 | 600 | mutagenesis | enhancers | [4] |
-| MPRABase_RET | MPRA | Neuro-2a | RET | 600 | mutagenesis | enhancers | [4] |
-| MPRABase_TCF7L2 | MPRA | MIN6 | TCF7L2 | 600 | mutagenesis | enhancers | [4] |
-| SCREEN | - | - | - | 600 | natural | CREs | [5] |
-| DS-lentiMPRA-M | lentiMPRA | HepG2 | - | 170 | natural | enhancers | [6] |
-| DS-lentiMPRA-WT | lentiMPRA | HepG2 | - | 170 | natural | enhancers | [6] |
-| DS-STARR-seq | STARR-seq | HepG2 | - | 186 | natural | enhancers | [7] |
-| CRÈME_K562 | - | K562 | - | 196608 | natural | enhancers | [8] |
-| CRÈME_GM12878 | - | GM12878 | - | 196608 | natural | enhancers | [8] |
-| CRÈME_PC-3 | - | PC-3 | - | 196608 | natural | enhancers | [8] |
-| promoterAI_clinvar | - | - | - | 2001 | natural | enhancers | [9] |
-| promoterAI_cagi5 | - | - | - | 2001 | natural | enhancers | [9] |
-| promoterAI_mprasat | - | - | - | 2001 | natural | enhancers | [9] |
-| promoterAI_gelrna | - | - | - | 2001 | natural | enhancers | [9] |
+| Dataset Name | Experiment Method | Cell Type | Length | Design Method | Description | Paper |
+|--------------|------------------|------------|--------|---------------|-------------|-------|
+| MPRA_HepG2 | MPRA | HepG2 | 200 | adalead | enhancers | [1] |
+| MPRA_K562 | MPRA | K562 | 200 | adalead | enhancers | [1] |
+| MPRA_SKNSH | MPRA | SKNSH | 200 | adalead | enhancers | [1] |
+| lentiMPRA_HepG2 | lentiMPRA | HepG2 | 200 | natural | enhancers | [2] |
+| lentiMPRA_K562 | lentiMPRA | K562 | 200 | natural | enhancers | [2] |
+| lentiMPRA_WTC11 | lentiMPRA | WTC11 | 200 | natural | enhancers | [2] |
+| Epigenetics_ELF1 | MPRA | HepG2 | 168 | deepseed | enhancers | [3] |
+| Epigenetics_HNF1A | MPRA | HepG2 | 168 | deepseed | enhancers | [3] |
+| Epigenetics_HNF4A | MPRA | HepG2 | 168 | deepseed | enhancers | [3] |
+| Epigenetics_118TF | MPRA | HepG2 | 168 | deepseed | enhancers | [3] |
+| Epigenetics_train | MPRA | HepG2 | 168 | natural | enhancers | [3] |
+| Epigenetics_motif | MPRA | HepG2 | 168 | perturbation | enhancers | [3] |
+| MPRABase_F9 | MPRA | HepG2 | 303 | mutagenesis | promoters | [4] |
+| MPRABase_GP1BA | MPRA | HEL 92.1.7 | 385 | mutagenesis | promoters | [4] |
+| MPRABase_HBG1 | MPRA | HEL 92.1.7 | 274 | mutagenesis | promoters | [4] |
+| MPRABase_IRF4 | MPRA | SK-MEL-28 | 451 | mutagenesis | enhancers | [4] |
+| MPRABase_IRF6 | MPRA | HaCaT | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_LDLR | MPRA | HepG2 | 318 | mutagenesis | promoters | [4] |
+| MPRABase_PKLR | MPRA | K562 | 470 | mutagenesis | promoters | [4] |
+| MPRABase_SORT1 | MPRA | HepG2 | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_TERT | MPRA | SF7996 | 259 | mutagenesis | promoters | [4] |
+| MPRABase_ZFAND3 | MPRA | MIN6 | 579 | mutagenesis | enhancers | [4] |
+| MPRABase_HBB | MPRA | HEL 92.1.7 | 187 | mutagenesis | promoters | [4] |
+| MPRABase_UC88 | MPRA | Neuro-2a | 590 | mutagenesis | enhancers | [4] |
+| MPRABase_MYC_rs6983267 | MPRA | HEK293T | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_RET | MPRA | Neuro-2a | 600 | mutagenesis | enhancers | [4] |
+| MPRABase_TCF7L2 | MPRA | MIN6 | 600 | mutagenesis | enhancers | [4] |
+| SCREEN | - | - | 600 | natural | CREs | [5] |
+| DS-lentiMPRA-M | lentiMPRA | HepG2 | 170 | natural | enhancers | [6] |
+| DS-lentiMPRA-WT | lentiMPRA | HepG2 | 170 | natural | enhancers | [6] |
+| DS-STARR-seq | STARR-seq | HepG2 | 186 | natural | enhancers | [7] |
+| CRÈME_K562 | - | K562 | 196608 | natural | enhancers | [8] |
+| CRÈME_GM12878 | - | GM12878 | 196608 | natural | enhancers | [8] |
+| CRÈME_PC-3 | - | PC-3 | 196608 | natural | enhancers | [8] |
+| promoterAI_clinvar | - | - | 2001 | natural | enhancers | [9] |
+| promoterAI_cagi5 | - | - | 2001 | natural | enhancers | [9] |
+| promoterAI_mprasat | - | - | 2001 | natural | enhancers | [9] |
+| promoterAI_gelrna | - | - | 2001 | natural | enhancers | [9] |
 
 ---
 
 ## Model Summary
 
 | Model | Platform | Architecture | Weights | Code | In | Out | Dim | Knowledge Level | Cell Type | Note | Reference |
-|---|---|---|---|---|---|---|---|---:|---:|---:|---|---|---|---|
+|---|---|---|---|---|---:|---:|---:|---|---|---|---|
 | Malinois | pytorch | CNN | [weights][w1] | [code][c1] | 200 | - | 3 | MPRA | HepG2, K562, SK-N-SH | - | [1] Nature 2024 |
 | Basset | torch(lua) | CNN | [weights][w2] | [code][c2] | 600 | - | 164 | DNase-seq | 164 | - | [10] Genome Research 2016 |
 | DanQ | keras | CNN, LSTM | [weights][w3] | [code][c3] | 1000 | - | 919 | DNase-seq (125), ChIP-seq (690), Histone (104) | - | same as DeepSEA | [11] Bioinformatics 2016 |
