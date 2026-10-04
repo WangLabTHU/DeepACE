@@ -332,16 +332,16 @@ For a model such as Sei, which maps one sequence to many features with a single 
 
 # Resources
 
-Zenodo repository for codes: https://zenodo.org/records/20133013
+Zenodo repository for codes: https://zenodo.org/records/20116128
 
 ```
-WangLabTHU, & Qixiu Du. (2026). WangLabTHU/DeepACE: (Toolkits) Anchor-based ensemble learning for assessing regulatory function of DNA sequences (v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.20133013
+WangLabTHU, & Qixiu Du. (2026). WangLabTHU/DeepACE: (Toolkits) Anchor-based ensemble learning for assessing regulatory function of DNA sequences (v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.20116128
 ```
 
-Zenodo repository for datasets, model checkpoints, and model validation data: https://zenodo.org/records/20119457
+Zenodo repository for datasets, model checkpoints, and model validation data: https://zenodo.org/records/20119456
 
 ```
-Du, Q., Yu, H., & Wang, X. (2026). WangLabTHU/DeepACE: (Datasets) Anchor-based ensemble learning for assessing regulatory function of DNA sequences [Data set]. Zenodo. https://doi.org/10.5281/zenodo.20119457
+Du, Q., Yu, H., & Wang, X. (2026). WangLabTHU/DeepACE: (Datasets) Anchor-based ensemble learning for assessing regulatory function of DNA sequences [Data set]. Zenodo. https://doi.org/10.5281/zenodo.20119456
 ```
 
 # License
