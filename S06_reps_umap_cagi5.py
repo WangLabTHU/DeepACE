@@ -89,13 +89,13 @@ def plot_umap(sample_data, sample_labels, sorted_labels, plot_tag, idx_min, idx_
     plt.scatter(
         df_plot.loc[idx_min + 1, 'Dim1'],
         df_plot.loc[idx_min + 1, 'Dim2'],
-        color='blue', s=50, alpha=0.9, edgecolor="white", label='Min ΔlogFC'
+        color='blue', s=50, alpha=0.9, edgecolor="white", label='Bottom ΔlogFC'
     )
     idx_max = np.array(idx_max)
     plt.scatter(
         df_plot.loc[idx_max + 1, 'Dim1'],
         df_plot.loc[idx_max + 1, 'Dim2'],
-        color='red', s=50, alpha=0.9, edgecolor="white", label='Max ΔlogFC'
+        color='red', s=50, alpha=0.9, edgecolor="white", label='Top ΔlogFC'
     )
     plt.xlabel('UMAP Dim1', fontsize=16)
     plt.ylabel('UMAP Dim2', fontsize=16)
@@ -108,7 +108,7 @@ def plot_umap(sample_data, sample_labels, sorted_labels, plot_tag, idx_min, idx_
     # cbar.set_ticks(new_ticks)
     # cbar.set_ticklabels([f'{t:.1f}' for t in new_ticks])
     plt.tight_layout()
-    plt.savefig(f"{output_dir}/proj_umap_{plot_tag}.pdf", dpi=400, bbox_inches='tight')
+    plt.savefig(f"{output_dir}/proj_umap_{plot_tag}.png", dpi=400, bbox_inches='tight')
     # df_plot.to_csv(f"{output_dir}/proj_umap_{plot_tag}.csv", index=False)
     plt.close()
 
@@ -265,9 +265,9 @@ min_y = [p[1] for p in min_max_points['min']]
 max_x = [p[0] for p in min_max_points['max']]
 max_y = [p[1] for p in min_max_points['max']]
 plt.scatter(min_x, min_y, color='#1f77b4', s=60, edgecolor='white', linewidth=1, alpha=0.9,
-            label='Top20 Min ΔlogFC', zorder=20)
+            label='Bottom 20 ΔlogFC', zorder=20)
 plt.scatter(max_x, max_y, color='#d62728', s=60, edgecolor='white', linewidth=1, alpha=0.9,
-            label='Top20 Max ΔlogFC', zorder=20)
+            label='Top 20 ΔlogFC', zorder=20)
 colors = plt.cm.tab20(np.linspace(0, 1, 15))
 for i, motif in enumerate(motif_order):
     x, y = backbone_embeddings[motif]
@@ -284,5 +284,5 @@ plt.legend(by_label.values(), by_label.keys(), loc='upper left', bbox_to_anchor=
 plt.title('Combined mutational landscape across 10 regulatory elements', fontsize=20, pad=20)
 plt.tight_layout()
 output_dir_combined = "./Supps/S06_reps_umap_cagi5"
-plt.savefig(f"{output_dir_combined}/proj_umap_combined.pdf", dpi=400, bbox_inches='tight')
+plt.savefig(f"{output_dir_combined}/proj_umap_combined.png", dpi=400, bbox_inches='tight')
 plt.close()

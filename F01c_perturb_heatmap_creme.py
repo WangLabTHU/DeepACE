@@ -122,7 +122,7 @@ for i in range(len(df_list)):
                     ax.add_patch(plt.Rectangle((j, i), 1, 1, fill=False, edgecolor='black', lw=1.5))
 
         plt.title(
-            f"{celltypes_name} (tile_size=5000)\nRegion offset: {offset}",
+            f"{celltypes_name} (tile_size=500)\nRegion offset: {offset}",
             fontsize=14
         )
         plt.xticks(rotation=45, ha="right", fontsize=10)
@@ -130,7 +130,7 @@ for i in range(len(df_list)):
         plt.tight_layout()
         plot_path = os.path.join(
             bar_dir,
-            f"{celltypes_name}_corr_heatmap_tile5000_region_{offset}.pdf"
+            f"{celltypes_name}_corr_heatmap_tile500_region_{offset}.pdf"
         )
         plt.savefig(plot_path, dpi=400, bbox_inches='tight')
         plt.close()

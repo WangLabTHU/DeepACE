@@ -60,7 +60,6 @@ def draw_graph_with_embedding(embedding, labels, G, save_path, title='Embedding'
                scatterpoints=1, loc='upper right', fontsize=14, frameon=True, handletextpad=0.05)
     ax = plt.gca()
     plt.tick_params(axis='both', labelsize=16)
-    plt.title('Structural Patterns in Functional Space', fontsize=14, fontweight='bold')
     plt.tight_layout()
     plt.savefig(save_path, dpi=400)
     plt.close()
@@ -192,5 +191,5 @@ for dataset in ["DS", "MPRA", "Epigenetics", "lentiMPRA"]:
                 for i in range(len(idx)):
                     for j in indices[i, 1:]:
                         G.add_edge(idx[i], idx[j])
-            draw_graph_with_embedding(emb_mds, labels, G, f'./Supps/S05_reps_mds/proj_mds_cold_{category}.pdf', title='mds')
+            draw_graph_with_embedding(emb_mds, labels, G, f'./Supps/S05_reps_mds/proj_mds_cold_{category}.png', title='mds')
             # np.savez(f'./Supps/S05_reps_mds/proj_mds_cold_{category}.npz', emb_mds=emb_mds, labels=labels)

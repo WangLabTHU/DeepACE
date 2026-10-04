@@ -36,6 +36,10 @@ from scipy.stats import gaussian_kde
 from sklearn.decomposition import PCA
 from umap import UMAP
 from matplotlib.colors import TwoSlopeNorm
+import joblib
+
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 
 def plot_umap(sample_data, sample_labels, sorted_labels, plot_tag, idx_min, idx_max,
@@ -90,13 +94,13 @@ def plot_umap(sample_data, sample_labels, sorted_labels, plot_tag, idx_min, idx_
     plt.scatter(
         df_plot.loc[idx_min + 1, 'Dim1'],
         df_plot.loc[idx_min + 1, 'Dim2'],
-        color='blue', s=50, alpha=0.9, edgecolor="white", label='Min ΔlogFC'
+        color='blue', s=50, alpha=0.9, edgecolor="white", label='Bottom ΔlogFC'
     )
     idx_max = np.array(idx_max)
     plt.scatter(
         df_plot.loc[idx_max + 1, 'Dim1'],
         df_plot.loc[idx_max + 1, 'Dim2'],
-        color='red', s=50, alpha=0.9, edgecolor="white", label='Max ΔlogFC'
+        color='red', s=50, alpha=0.9, edgecolor="white", label='Top ΔlogFC'
     )
     plt.xlabel('UMAP Dim1', fontsize=16)
     plt.ylabel('UMAP Dim2', fontsize=16)
