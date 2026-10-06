@@ -193,75 +193,10 @@ def interpret_pseudo_similarity_new(sample_data, sample_labels, labels,
     distances, _ = nbrs.kneighbors(real_vectors)
     mean_distances = distances.mean(axis=1)
     pseudo_similarity = 1 - mean_distances / np.max(mean_distances)
-
-    ## (2) calculating bin features
-    
     order = np.argsort(-pseudo_similarity)
     sorted_similarity = pseudo_similarity[order]
-    sorted_labels = labels[order]
-    sorted_groups = np.array(sample_labels)[real_idx][order]
-    n_real = len(real_vectors)
-    bin_edges = np.linspace(0, n_real, n_bins + 1, dtype=int)
-    bin_ids = np.zeros(n_real, dtype=int)
-    for i in range(n_bins):
-        bin_ids[bin_edges[i]:bin_edges[i+1]] = i + 1
-    bin_df = pd.DataFrame({
-        "sample_id": np.arange(1, n_real + 1),
-        "order": np.arange(1, n_real + 1),
-        "pseudo_similarity": sorted_similarity,
-        "label": sorted_labels,
-        "group": sorted_groups,
-        "bin_id": bin_ids})
-    bin_save = os.path.join(output_dir, f"pseudo_similarity_bins_{plot_tag}.csv")
-    bin_df.to_csv(bin_save, index=False)
-    print(f"[Saved] pseudo-similarity bins -> {bin_save}")
-    
-    ## (3) analyzing the contribution by classification model
 
-    anno_indices = anno_df.index.tolist()
-    bin_focus = bin_df[bin_df["bin_id"].isin([1, n_bins])]
-    X_focus = real_vectors[order][bin_focus.index]
-    y_focus = bin_focus["bin_id"].values
-    try:
-        clf = RandomForestClassifier(n_estimators=200, random_state=42)
-        clf.fit(X_focus, y_focus)
-        feature_importances = clf.feature_importances_ # (50, )
-    except Exception as e:
-        raise RuntimeError(f"[Error] RandomForestClassifier fitting failed: {e}")
-    pca_components = pca_model.components_ # (50, 43275)
-    
-    weighted_contrib = np.abs(pca_components).T @ feature_importances 
-    # signed_contrib = (pca_components * feature_importances[:, None]).sum(axis=0)
-    
-    bin_1_mask = bin_focus["bin_id"] == 1
-    bin_n_mask = bin_focus["bin_id"] == n_bins
-    X_bin_1 = X_focus[bin_1_mask]
-    X_bin_n = X_focus[bin_n_mask]
-    pc_direction = X_bin_n.mean(axis=0) - X_bin_1.mean(axis=0)
-    signed_contrib = pca_components.T @ (feature_importances * pc_direction)
-    
-    total = weighted_contrib.sum()
-    if total > 0:
-        weighted_contrib /= total
-        signed_contrib /= total
-    else:
-        weighted_contrib = np.zeros(pca_components.shape[1])
-        signed_contrib = np.zeros(pca_components.shape[1])
-    df_focus = anno_df.copy()
-    df_focus["original_index"] = anno_indices
-    df_focus["abs_contribution"] = weighted_contrib
-    df_focus["signed_contribution"] = signed_contrib
-    df_focus["mapping_method"] = "RandomForest_bin_focus"
-    df_focus["feature_clean"] = df_focus["feature"].replace({"CHIP:": "CHIP-seq:","CEBPb": "CEBPB","CHIP-seq:3xFLAG-": "CHIP-seq:"}, regex=True)
-    df_focus["feature_group"] = df_focus["feature_clean"].apply(classify_feature)
-    df_focus["feature_channel"] = df_focus.apply(lambda row: f"({row['model']})-({row.name})-{row['feature_clean']}", axis=1)
-    df_focus = df_focus.sort_values(by="signed_contribution", ascending=False)
-    contrib_save = os.path.join(output_dir, f"classification_feature_contributions_{plot_tag}.csv")
-    df_focus = df_focus.drop(columns=["Unnamed: 0"]).reset_index(drop=True)
-    df_focus.to_csv(contrib_save)
-    print(f"[Info] Global classification feature contributions saved to {contrib_save}")
-
-    ## (4) analyzing the contribution by regression model
+    ## (2) analyzing the contribution by regression model
     anno_indices = anno_df.index.tolist()
     pca_components = pca_model.components_  # (n_components, n_original)
     n_original = pca_components.shape[1]
